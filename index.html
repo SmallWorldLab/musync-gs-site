@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="muSync-GS generates physics-synchronized counterfactual driving videos by coupling weather and road edits with tire–vehicle dynamics and ego-camera motion in reconstructed real-world scenes.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#081a2d">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="muSync-GS — Physics-Synchronized Driving Video Synthesis">
+  <meta property="og:description" content="Edit the weather or the road—and regenerate the motion that should follow.">
+  <meta property="og:image" content="assets/images/og-cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>muSync-GS — Physics-Synchronized Driving Video Synthesis</title>
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" data-header>
+    <div class="nav-wrap">
+      <a class="brand" href="#top" aria-label="muSync-GS home">
+        <span class="brand-mark" aria-hidden="true">μ</span>
+        <span>muSync-GS</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+        <span class="sr-only">Toggle navigation</span>
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation" data-nav>
+        <a href="#overview">Overview</a>
+        <a href="#method">Method</a>
+        <a href="#demos">Demos</a>
+        <a href="#results">Results</a>
+        <a href="#reproducibility">Protocols</a>
+        <a href="#resources">Resources</a>
+      </nav>
+      <a class="nav-paper" href="assets/papers/musync-gs-paper.pdf" target="_blank" rel="noopener">View paper</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-glow hero-glow-a" aria-hidden="true"></div>
+      <div class="hero-glow hero-glow-b" aria-hidden="true"></div>
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Physics-synchronized counterfactual driving videos</p>
+          <h1>muSync-GS</h1>
+          <p class="hero-title">Physics-Synchronized Driving Video Synthesis for Weather and Geometric Road Hazards</p>
+          <p class="hero-lead">Edit the weather or the road—and regenerate the motion that should follow. A shared scenario state drives appearance, tire–road interaction, vehicle dynamics, and ego-camera motion.</p>
+          <p class="draft-note"><span aria-hidden="true">●</span> Anonymous project-page draft. Author and venue details remain intentionally hidden.</p>
+          <div class="cta-row" aria-label="Project links">
+            <a class="button button-primary" href="assets/papers/musync-gs-paper.pdf" target="_blank" rel="noopener">Paper <span aria-hidden="true">↗</span></a>
+            <a class="button button-secondary" href="assets/papers/musync-gs-supplement.pdf" target="_blank" rel="noopener">Supplement</a>
+            <a class="button button-secondary" href="#demos">Watch demos</a>
+            <span class="button button-muted" aria-disabled="true">Code soon</span>
+          </div>
+        </div>
+
+        <div class="hero-media">
+          <div class="media-frame media-frame-dark">
+            <video muted loop playsinline controls preload="metadata" poster="assets/images/cover.jpg" data-autoplay-visible aria-label="muSync-GS overview video">
+              <source src="assets/videos/main-demo.mp4" type="video/mp4">
+              Your browser does not support embedded video.
+            </video>
+            <div class="media-caption">
+              <span class="live-dot" aria-hidden="true"></span>
+              <span>One shared control state drives the visual edit and the physical response.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="shell proof-strip" aria-label="Frozen CarSim validation highlights">
+        <div class="proof-item"><strong>0.0273 <small>m/s</small></strong><span>Speed RMSE</span></div>
+        <div class="proof-item"><strong>0.0590<small>°</small></strong><span>Body-pitch RMSE</span></div>
+        <div class="proof-item"><strong>0.0101</strong><span>Slip-ratio RMSE</span></div>
+        <div class="proof-item"><strong>26.61 <small>N</small></strong><span>Per-wheel load RMSE</span></div>
+        <p class="proof-source">Frozen held-out CarSim evaluation; no parameter refitting.</p>
+      </div>
+    </section>
+
+    <section class="section" id="overview">
+      <div class="shell split-heading">
+        <div>
+          <p class="section-kicker">The problem</p>
+          <h2>An edited road should change more than pixels.</h2>
+        </div>
+        <p>Appearance-only methods can add rain, snow, a speed hump, or a road depression while replaying the original ego motion. muSync-GS couples each edit to braking, wheel slip, axle load, heave, pitch, path progress, and the rendered camera trajectory.</p>
+      </div>
+      <div class="shell figure-card">
+        <img src="assets/images/concept.webp" alt="Conceptual comparison: appearance-only editing preserves the original motion, while muSync-GS drives visual synthesis and vehicle response from shared physical interfaces." loading="lazy">
+        <p class="figure-caption">Visual plausibility alone does not guarantee a physically consistent counterfactual. muSync-GS makes the visual and dynamic branches consequences of the same intervention.</p>
+      </div>
+      <div class="shell abstract-card">
+        <div>
+          <p class="section-kicker">Abstract</p>
+          <h3>Counterfactual driving video with a shared physical cause.</h3>
+        </div>
+        <div>
+          <p>Rare adverse-weather braking and uneven-road events are costly and risky to collect at scale. Existing video and 3D Gaussian editors can change weather appearance or road geometry, but usually leave tire–road interaction, vehicle response, and ego motion disconnected from the edit.</p>
+          <p>muSync-GS uses precipitation-derived surface state, a shared signed road-elevation profile, and a calibrated tire–vehicle model to synchronize road appearance, friction, braking, wheel slip, normal load, heave, pitch, and camera motion. We evaluate the frozen vehicle response against CarSim, audit brake dive on A2D2, and compare video-level response and controllability on reconstructed Waymo scenes.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tinted" id="method">
+      <div class="shell section-intro">
+        <p class="section-kicker">Method</p>
+        <h2>One scenario state, synchronized outputs.</h2>
+        <p>The same control variables enter both branches; rendered pixels are never treated as physical measurements.</p>
+      </div>
+
+      <div class="shell figure-card figure-card-wide">
+        <img src="assets/images/pipeline.webp" alt="muSync-GS pipeline from weather, road, and vehicle controls through coupled hazard synthesis, tire-vehicle dynamics, and trajectory-synchronized rendering." loading="lazy">
+      </div>
+
+      <div class="shell feature-grid">
+        <article class="feature-card feature-blue">
+          <span class="feature-index">01</span>
+          <h3>Surface state</h3>
+          <p>Precipitation rate and duration determine water-film or snow state, which controls both road appearance and effective tire friction.</p>
+          <span class="feature-flow">weather → surface → appearance + friction</span>
+        </article>
+        <article class="feature-card feature-green">
+          <span class="feature-index">02</span>
+          <h3>Shared road geometry</h3>
+          <p>A signed road-height profile drives both the visible Gaussian road edit and the front/rear tire-contact excitation.</p>
+          <span class="feature-flow">road profile → edit + axle excitation</span>
+        </article>
+        <article class="feature-card feature-amber">
+          <span class="feature-index">03</span>
+          <h3>Trajectory synchronization</h3>
+          <p>Simulated station, heave, and pitch correct the ego-camera pose so the rendered motion follows the predicted vehicle response.</p>
+          <span class="feature-flow">vehicle state → route timing + camera pose</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="section demos-section" id="demos">
+      <div class="shell section-intro section-intro-light">
+        <p class="section-kicker">Interactive demos</p>
+        <h2>See the edit and the response together.</h2>
+        <p>Each clip uses presentation aliases for scenes and contains no audio. Select one demo at a time to keep the page lightweight.</p>
+      </div>
+
+      <div class="shell demo-layout">
+        <div class="demo-selector" role="tablist" aria-label="Demo videos">
+          <button type="button" role="tab" aria-selected="true" data-demo-button data-video="assets/videos/main-demo.mp4" data-poster="assets/images/cover.jpg" data-label="Overview" data-title="Physics-synchronized overview" data-copy="An 18-second summary of continuous rain and snow control, cross-scene transfer, and signed road-geometry events.">
+            <span>Overview</span><small>18 s summary</small>
+          </button>
+          <button type="button" role="tab" aria-selected="false" data-demo-button data-video="assets/videos/rain-control.mp4" data-poster="assets/images/cover.jpg" data-label="Weather control" data-title="Continuous rain-rate control" data-copy="Sunny, 10, 25, and 50 mm/h rain under matched initial speed and brake pressure; the visual condition and friction-dependent response share the same control.">
+            <span>Rain rate</span><small>0–50 mm/h</small>
+          </button>
+          <button type="button" role="tab" aria-selected="false" data-demo-button data-video="assets/videos/snow-control.mp4" data-poster="assets/images/cover.jpg" data-label="Weather control" data-title="Snowfall and accumulation control" data-copy="Sunny and 0.5, 1, and 3 mm/h SWE snow, including static accumulation and falling particles.">
+            <span>Snow rate</span><small>0–3 mm/h SWE</small>
+          </button>
+          <button type="button" role="tab" aria-selected="false" data-demo-button data-video="assets/videos/multiscene.mp4" data-poster="assets/images/cover.jpg" data-label="Generalization" data-title="Transfer across reconstructed routes" data-copy="Rain control on the primary quantitative scene and three additional static or quasi-static reconstructed routes.">
+            <span>Multi-scene</span><small>4 routes</small>
+          </button>
+          <button type="button" role="tab" aria-selected="false" data-demo-button data-video="assets/videos/road-hazards.mp4" data-poster="assets/images/cover.jpg" data-label="Road geometry" data-title="Signed road hazards" data-copy="Speed-hump and road-depression events with geometry edits synchronized to pitch, heave, and path timing.">
+            <span>Road hazards</span><small>hump + depression</small>
+          </button>
+        </div>
+
+        <div class="demo-stage" role="tabpanel" aria-live="polite">
+          <div class="demo-video-wrap">
+            <video controls muted loop playsinline preload="metadata" poster="assets/images/cover.jpg" data-demo-video aria-label="Selected muSync-GS demonstration">
+              <source src="assets/videos/main-demo.mp4" type="video/mp4" data-demo-source>
+            </video>
+          </div>
+          <div class="demo-copy">
+            <p class="demo-label" data-demo-label>Overview</p>
+            <h3 data-demo-title>Physics-synchronized overview</h3>
+            <p data-demo-copy>An 18-second summary of continuous rain and snow control, cross-scene transfer, and signed road-geometry events.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="results">
+      <div class="shell split-heading">
+        <div>
+          <p class="section-kicker">Evidence</p>
+          <h2>Visual control, physical response, and real-vehicle audit.</h2>
+        </div>
+        <p>We separate frozen vehicle-model accuracy, video-response diagnostics, real-vehicle brake-dive consistency, and visual controllability rather than compressing them into a single score.</p>
+      </div>
+
+      <div class="shell results-tabs" data-tabs>
+        <div class="tab-buttons" role="tablist" aria-label="Result categories">
+          <button type="button" role="tab" aria-selected="true" aria-controls="result-carsim" id="tab-carsim" data-tab-button="carsim">Frozen CarSim</button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="result-video" id="tab-video" data-tab-button="video">Video response</button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="result-real" id="tab-real" data-tab-button="real">Real vehicle</button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="result-visual" id="tab-visual" data-tab-button="visual">Visual control</button>
+        </div>
+
+        <article class="result-panel is-active" id="result-carsim" role="tabpanel" aria-labelledby="tab-carsim" data-tab-panel="carsim">
+          <div class="result-copy">
+            <p class="result-overline">Frozen-parameter validation</p>
+            <h3>Held-out controls without parameter refitting</h3>
+            <p>The reduced-order model tracks CarSim speed, body pitch, slip ratio, and per-wheel normal load across weather, braking, and road-profile conditions.</p>
+            <ul class="compact-list">
+              <li><strong>0.0273 m/s</strong> speed RMSE</li>
+              <li><strong>0.0590°</strong> body-pitch RMSE</li>
+              <li><strong>0.0101</strong> slip-ratio RMSE</li>
+              <li><strong>26.61 N</strong> per-wheel load RMSE</li>
+            </ul>
+          </div>
+          <figure><img src="assets/images/carsim-validation.webp" alt="Representative CarSim and muSync-GS speed and pitch trajectories across braking, speed-hump, road-depression, and speed-holdout cases." loading="lazy"><figcaption>Representative response traces; complete protocols and case tables are in the supplement.</figcaption></figure>
+        </article>
+
+        <article class="result-panel" id="result-video" role="tabpanel" aria-labelledby="tab-video" data-tab-panel="video" hidden>
+          <div class="result-copy">
+            <p class="result-overline">VGGT-based diagnostics</p>
+            <h3>Motion responds to the counterfactual controls</h3>
+            <p>Weather progress and road-geometry scores are protocol-specific diagnostics, not a single physical-accuracy ranking of video generators.</p>
+            <ul class="compact-list">
+              <li><strong>0.00424 ± 0.00010</strong> normalized-progress RMSE</li>
+              <li><strong>0.00266 ± 0.00007</strong> progress-aligned lateral deviation</li>
+              <li><strong>0.352 / 0.396</strong> hump / depression response NRMSE</li>
+              <li><strong>0.354 / 0.406</strong> rendered state reference, geometry only</li>
+            </ul>
+            <p class="result-note">The rendered state reference is empirical, not a strict measurement lower bound.</p>
+          </div>
+          <figure><img src="assets/images/ablation.webp" alt="Ablation plots showing continuous precipitation effects on stopping distance and coupled body-pitch response for rain braking over a speed hump." loading="lazy"><figcaption>Full muSync-GS continuously couples precipitation severity, braking, road geometry, and body pitch.</figcaption></figure>
+        </article>
+
+        <article class="result-panel" id="result-real" role="tabpanel" aria-labelledby="tab-real" data-tab-panel="real" hidden>
+          <div class="result-copy">
+            <p class="result-overline">A2D2 brake-dive audit</p>
+            <h3>Complete-drive leave-one-out evaluation</h3>
+            <p>Vehicle-specific calibration is learned from the other two drives and evaluated on the held-out drive, using only brake pressure and onset speed at test time.</p>
+            <ul class="compact-list">
+              <li><strong>14</strong> braking events across 3 drives</li>
+              <li><strong>0.062°</strong> body-pitch RMSE</li>
+              <li><strong>0.381°/s</strong> pitch-rate RMSE</li>
+              <li><strong>0.901 / 0.560</strong> pitch / pitch-rate correlation</li>
+            </ul>
+          </div>
+          <figure><img src="assets/images/a2d2.webp" alt="Measured A2D2 and muSync-GS mean body-pitch and pitch-rate response after brake-pressure onset with one-standard-deviation bands." loading="lazy"><figcaption>Events are averaged within each held-out drive and then across drives with equal weight.</figcaption></figure>
+        </article>
+
+        <article class="result-panel result-panel-visual" id="result-visual" role="tabpanel" aria-labelledby="tab-visual" data-tab-panel="visual" hidden>
+          <div class="result-copy">
+            <p class="result-overline">Matched visual protocols</p>
+            <h3>Controllable weather and localized road edits</h3>
+            <p>Rain and snow severity is evaluated separately from localized road editing. Dry-road geometry synthesis is deterministic; precipitation appearance is reported across random seeds.</p>
+            <ul class="compact-list">
+              <li><strong>1.000 / 1.000</strong> rain / snow severity ordering</li>
+              <li><strong>0.711</strong> localized-edit rate</li>
+              <li><strong>0.603</strong> temporal mask IoU</li>
+            </ul>
+          </div>
+          <div class="visual-pair">
+            <figure><img src="assets/images/weather-grid.webp" alt="Weather controllability comparison across sunny, light rain, heavy rain, light snow, and heavy snow for Cosmos, LTX-Video, VACE, and muSync-GS." loading="lazy"><figcaption>Matched scene and frame for weather controllability.</figcaption></figure>
+            <figure><img src="assets/images/road-edit.webp" alt="Road-edit comparison for speed humps and road depressions at approach, expected contact, and after passage." loading="lazy"><figcaption>Matched dry-input road editing at approach, expected contact, and after passage.</figcaption></figure>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-tinted" id="reproducibility">
+      <div class="shell section-intro">
+        <p class="section-kicker">Fair comparison</p>
+        <h2>Matched protocols, explicit conditions.</h2>
+        <p>Generator inputs, prompts, checkpoints, seeds, temporal windows, and aggregation rules are documented in the supplementary material.</p>
+      </div>
+      <div class="shell protocol-grid">
+        <article><h3>Cosmos Transfer 2.5</h3><dl><div><dt>Input</dt><dd>RGB + official depth condition</dd></div><div><dt>Sampling</dt><dd>35 steps, guidance 3</dd></div><div><dt>Role</dt><dd>Weather and geometry baseline</dd></div></dl></article>
+        <article><h3>LTX-Video 13B</h3><dl><div><dt>Input</dt><dd>Source video / RGB condition</dd></div><div><dt>Sampling</dt><dd>30 steps, fixed prompts</dd></div><div><dt>Role</dt><dd>Video-generation baseline</dd></div></dl></article>
+        <article><h3>VACE 14B</h3><dl><div><dt>Input</dt><dd>Reference video + edit mask</dd></div><div><dt>Sampling</dt><dd>50 UniPC steps</dd></div><div><dt>Role</dt><dd>Localized editing baseline</dd></div></dl></article>
+        <article class="protocol-highlight"><h3>muSync-GS</h3><dl><div><dt>Input</dt><dd>Reconstructed scene + scenario controls</dd></div><div><dt>Dynamics</dt><dd>Frozen tire–vehicle parameters</dd></div><div><dt>Output</dt><dd>Video + synchronized physical states</dd></div></dl></article>
+      </div>
+      <div class="shell protocol-link"><a href="assets/papers/musync-gs-supplement.pdf" target="_blank" rel="noopener">Read the complete evaluation protocol in the supplement <span aria-hidden="true">→</span></a></div>
+    </section>
+
+    <section class="section scope-section" id="scope">
+      <div class="shell scope-card">
+        <div><p class="section-kicker">Scope</p><h2>What this study does—and does not—claim.</h2></div>
+        <ul>
+          <li>Quantitative video experiments use static or quasi-static Waymo segments.</li>
+          <li>Other agents are replayed rather than counterfactually resimulated.</li>
+          <li>VGGT motion scores are monocular diagnostics with protocol-specific normalization.</li>
+          <li>The rendered state reference is geometry-only and empirical, not a strict measurement floor.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section resources-section" id="resources">
+      <div class="shell resources-grid">
+        <div class="resources-copy">
+          <p class="section-kicker">Resources</p>
+          <h2>Paper, protocols, and release artifacts.</h2>
+          <p>This draft ships with the current paper, supplement, compressed media, and reproducibility-ready page structure. Public code, data, author links, and the final citation remain release decisions.</p>
+          <div class="resource-links">
+            <a href="assets/papers/musync-gs-paper.pdf" target="_blank" rel="noopener"><strong>Paper</strong><span>Current compiled manuscript</span></a>
+            <a href="assets/papers/musync-gs-supplement.pdf" target="_blank" rel="noopener"><strong>Supplement</strong><span>Protocols, settings, and extended results</span></a>
+            <span class="resource-disabled"><strong>Code & data</strong><span>Coming after release approval</span></span>
+            <a href="#demos"><strong>Media</strong><span>Five H.264 demonstration videos</span></a>
+          </div>
+        </div>
+
+        <div class="citation-card">
+          <div class="citation-heading"><h3>Citation placeholder</h3><button type="button" data-copy-citation>Copy</button></div>
+          <pre><code id="citation">@inproceedings{musyncgs2027,
+  title     = {muSync-GS: Physics-Synchronized Driving
+               Video Synthesis for Weather and
+               Geometric Road Hazards},
+  author    = {Authors withheld during review},
+  booktitle = {Venue pending},
+  year      = {2027}
+}</code></pre>
+          <p>Replace the author list, venue, URL, and publication status before public deployment.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <div><strong>muSync-GS</strong><p>Physics-synchronized driving counterfactuals.</p></div>
+      <p>Original static implementation. Information architecture informed by the <a href="https://smallworldlab.github.io/scenefactory-site/" target="_blank" rel="noopener">SceneFactory project page</a>; no template code was copied.</p>
+    </div>
+  </footer>
+
+  <noscript><p class="noscript">JavaScript is only used for navigation, tabs, video switching, and citation copying. All core content remains available without it.</p></noscript>
+</body>
+</html>

@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "project": "muSync-GS",
+  "format": {
+    "codec": "H.264",
+    "resolution": [1280, 720],
+    "fps": 10,
+    "audio": false,
+    "faststart": true
+  },
+  "protocol": {
+    "rain_rates_mm_h": [0, 10, 25, 50],
+    "snow_rates_swe_mm_h": [0, 0.5, 1, 3],
+    "weather_braking": {
+      "initial_speed_kmh": 60,
+      "brake_pressure_mpa": 2.3
+    },
+    "road_events": {
+      "initial_speed_kmh": 40,
+      "brake_pressure_mpa": 2.3
+    }
+  },
+  "files": {
+    "main-demo.mp4": {
+      "description": "Overview of rain, snow, multi-scene transfer, and signed road geometry.",
+      "sha256": "8e34b504470151434cdba50de1d03b30e2fcbee6c7e2cf6221793b5425b20bd3"
+    },
+    "rain-control.mp4": {
+      "description": "Sunny and 10/25/50 mm/h rain under matched braking controls.",
+      "sha256": "aeb74065a8dbadb3b5066b602cb7609c2cff54b044f532b67a48fee9f2a81007"
+    },
+    "snow-control.mp4": {
+      "description": "Sunny and 0.5/1/3 mm/h SWE snow with accumulation and particles.",
+      "sha256": "a7b14e662fa9be05bda7afa053906e51e0ba42f7990b02b036ff70e9cce26bbc"
+    },
+    "multiscene.mp4": {
+      "description": "Rain transfer on the primary scene and three additional routes.",
+      "sha256": "f45b6f70a55a12a16e49a09103372d796f5dbad1ac6b1b98b37c27fa43669058"
+    },
+    "road-hazards.mp4": {
+      "description": "Speed-hump and road-depression events with synchronized pitch and heave.",
+      "sha256": "8f449efbe5ccbf481ffe5826620a85eb47bd5e9eb183462fffe65fde9faacf88"
+    }
+  }
+}
+

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">muSync-GS</title>
+  <defs>
+    <linearGradient id="g" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#55c4cb"/>
+      <stop offset="1" stop-color="#91ddb9"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="17" fill="#081a2d"/>
+  <path d="M15 44c7-3 12-3 18 0s11 3 16 0" fill="none" stroke="#e99a3b" stroke-width="4" stroke-linecap="round"/>
+  <path d="M22 18v15c0 7 4 11 10 11s10-4 10-11V18" fill="none" stroke="url(#g)" stroke-width="6" stroke-linecap="round"/>
+  <path d="M32 18v26" stroke="url(#g)" stroke-width="4" stroke-linecap="round"/>
+</svg>
