@@ -23,24 +23,25 @@
 - 完整英文标题、meta description 和一句话核心卖点。
 - 非论文式长摘要，而是适合网页阅读的 problem statement。
 - 最新 pipeline 和 conceptual-gap 图。
-- 五支匿名媒体视频：
-  - 18 秒总览；
-  - rain-rate control；
-  - snow-rate control；
-  - multi-scene transfer；
-  - speed-hump / road-depression hazards。
+- 34.5 秒最终匿名总览视频。
+- 20 个独立展示卡片 / 19 个唯一视频：
+  - Sunny + Rain 10/25/50；
+  - Sunny + Snow 0.5/1/2/3；
+  - Speed bump × Dry/Rain 50/Snow 3；
+  - Sunken road × Dry/Rain 50/Snow 3；
+  - 5 个匿名 multi-scene 路线。
 - Frozen CarSim、VGGT video diagnostics、A2D2、visual-control 四组结果模块。
 - 最新 Figure 6（无 H/D ratio）、Figure 7（`CarSim state reference`、`Body pitch`）。
 - 最新 9 页主文和 20 页 supplement。
 - Scope/limitation：静态或准静态 Waymo 场景、动态 agents 未重模拟、VGGT 指标限制、geometry-only empirical reference。
-- Nerfies/Bulma 学术主页结构、响应式布局、视频轮播、reduced-motion、alt text 和 BibTeX 复制。
+- Nerfies/Bulma 学术主页结构、响应式分类视频画廊、按需视频加载、reduced-motion、alt text 和 BibTeX 复制。
 
 ## 3. 建议再准备的展示素材
 
 ### P0：很值得补
 
 1. **8–12 秒 hero teaser**
-   - 当前总览为约 18 秒，已经能用。
+   - 当前使用最终 34.5 秒 media-supplement overview，信息完整但首屏偏长。
    - 更理想的是另剪一个首屏版本：Sunny → Rain-50 braking → speed hump → Snow-3 depression，每段 2–3 秒。
 
 2. **统一的 baseline side-by-side 视频**
@@ -58,7 +59,7 @@
 
 ### P1：有时间再补
 
-- 五个 Waymo 场景的独立 thumbnail；点击后再加载对应视频。
+- 五个 Waymo 场景已经具有独立 poster 和按需加载视频。
 - 一张简化版 Table 3，而不是把论文整张表塞进网页。
 - 30–60 秒 narrated overview 或字幕版 demo。
 - 每支视频的英文 transcript / caption 文件（WebVTT）。
@@ -117,7 +118,7 @@ SmallWorldLab/musync-gs-site
 2. Hero teaser
 3. Four-number proof strip
 4. Abstract / conceptual gap
-5. Counterfactual video carousel
+5. Counterfactual video gallery: Rain / Snow / Speed Bump / Sunken Road / Multi-scene
 6. Pipeline / three shared interfaces
 7. CarSim / video / A2D2 evaluation blocks
 8. Visual controllability

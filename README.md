@@ -4,7 +4,9 @@ Academic project page for:
 
 > **muSync-GS: Physics-Synchronized Driving Video Synthesis for Weather and Geometric Road Hazards**
 
-This revision is based on the public [Nerfies project-page template](https://github.com/nerfies/nerfies.github.io). The structure uses Bulma and the Nerfies carousel pattern, while the content, research media, typography accents, result modules, and responsive styling are customized for muSync-GS.
+This revision is based on the public [Nerfies project-page template](https://github.com/nerfies/nerfies.github.io). The structure uses Bulma and Nerfies-style academic presentation, while the content, research media, typography accents, result modules, and responsive styling are customized for muSync-GS.
+
+The media section contains 20 individually labeled cards backed by 19 unique videos: rain-rate control, snow-rate control, speed bumps, sunken roads, and five reconstructed routes. Gallery media is loaded only when it approaches the viewport.
 
 ## Local preview
 
@@ -43,6 +45,13 @@ See [CONTENT_CHECKLIST.md](CONTENT_CHECKLIST.md) before publication.
 ```
 
 No build step is required. The repository can be served as a static site.
+
+## Media loading
+
+- Only the hero overview autoplays.
+- Gallery videos use `preload="none"` and near-viewport source hydration.
+- Starting one gallery video pauses the others.
+- Each video ships with a small WebP poster and an explicit condition caption.
 
 ## Template license
 

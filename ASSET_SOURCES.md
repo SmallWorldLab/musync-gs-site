@@ -4,7 +4,7 @@ This file records the local sources used to assemble the draft project page. It 
 
 ## Website template
 
-- Structure and bundled Bulma/carousel assets are adapted from the [Nerfies project page](https://github.com/nerfies/nerfies.github.io).
+- Structure and bundled Bulma assets are adapted from the [Nerfies project page](https://github.com/nerfies/nerfies.github.io).
 - The Nerfies website is licensed under CC BY-SA 4.0. See `TEMPLATE_ATTRIBUTION.md`.
 - Google Analytics from the original template is not included.
 
@@ -16,11 +16,13 @@ This file records the local sources used to assemble the draft project page. It 
 
 ## Media
 
-Source archive:
+Final source archive:
 
-`/home/yc8786/Downloads/musync_gs_media_supplement.zip`
+`/data/data_4t/ResearchStudio/submission/musync_gs_media_supplement.zip`
 
-The five MP4 files were renamed for shorter web paths without re-encoding. Their SHA-256 hashes are recorded in `assets/videos/manifest.json`.
+The hero uses the final 34.5-second `00_MAIN_DEMO.mp4`. The gallery uses the individual source clips recorded by `/data/data_4t/ResearchStudio/scripts/build_musync_media_supplement.py`, plus the corresponding high-resolution Road Scene B speed-bump and sunken-road matrix. High-bitrate 960×640 sources were web-encoded to H.264 at a maximum width of 720 pixels; the small primary rain clips were remuxed with faststart. Every gallery clip has a WebP poster.
+
+The public page uses anonymous scene aliases. Semantic media metadata is recorded in `assets/videos/gallery/manifest.json`; source selection logic remains documented by the official supplement build script rather than embedded in page HTML.
 
 ## Figures
 

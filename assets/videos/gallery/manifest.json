@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "display_card_count": 20,
+  "unique_video_count": 19,
+  "format": {
+    "codec": "H.264",
+    "fps": 10,
+    "audio": false,
+    "maximum_width": 720,
+    "faststart": true
+  },
+  "groups": {
+    "rain": [
+      {"file": "rain/sunny.mp4", "label": "Sunny control", "rate_mm_h": 0},
+      {"file": "rain/rain-10.mp4", "label": "Rain 10", "rate_mm_h": 10},
+      {"file": "rain/rain-25.mp4", "label": "Rain 25", "rate_mm_h": 25},
+      {"file": "rain/rain-50.mp4", "label": "Rain 50", "rate_mm_h": 50}
+    ],
+    "snow": [
+      {"file": "rain/sunny.mp4", "label": "Sunny control", "rate_swe_mm_h": 0},
+      {"file": "snow/snow-0p5.mp4", "label": "Snow 0.5", "rate_swe_mm_h": 0.5},
+      {"file": "snow/snow-1.mp4", "label": "Snow 1", "rate_swe_mm_h": 1},
+      {"file": "snow/snow-2.mp4", "label": "Snow 2", "rate_swe_mm_h": 2},
+      {"file": "snow/snow-3.mp4", "label": "Snow 3", "rate_swe_mm_h": 3}
+    ],
+    "speed_bump": [
+      {"file": "speed-bump/dry.mp4", "weather": "dry"},
+      {"file": "speed-bump/rain-50.mp4", "weather": "rain_50"},
+      {"file": "speed-bump/snow-3.mp4", "weather": "snow_3"}
+    ],
+    "sunken_road": [
+      {"file": "sunken-road/dry.mp4", "weather": "dry"},
+      {"file": "sunken-road/rain-50.mp4", "weather": "rain_50"},
+      {"file": "sunken-road/snow-3.mp4", "weather": "snow_3"}
+    ],
+    "multiscene": [
+      {"file": "scenes/scene-a-rain-50-30.mp4", "alias": "A", "condition": "Rain 50", "initial_speed_kmh": 30},
+      {"file": "scenes/scene-b-rain-50-35.mp4", "alias": "B", "condition": "Rain 50", "initial_speed_kmh": 35},
+      {"file": "scenes/scene-c-rain-50-depression-40.mp4", "alias": "C", "condition": "Rain 50 + depression", "initial_speed_kmh": 40},
+      {"file": "scenes/scene-d-snow-3-40.mp4", "alias": "D", "condition": "Snow 3", "initial_speed_kmh": 40},
+      {"file": "scenes/scene-e-rain-50-45.mp4", "alias": "E", "condition": "Rain 50", "initial_speed_kmh": 45}
+    ]
+  }
+}

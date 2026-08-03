@@ -15,13 +15,11 @@
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
   <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
   <link rel="icon" href="./assets/images/favicon.svg" type="image/svg+xml">
 
   <script defer src="./static/js/fontawesome.all.min.js"></script>
-  <script src="./static/js/bulma-carousel.min.js"></script>
   <script defer src="./static/js/index.js"></script>
 </head>
 <body>
@@ -142,30 +140,146 @@
     </div>
   </section>
 
-  <section class="hero is-light is-small" id="demos">
-    <div class="hero-body">
-      <div class="container">
-        <h2 class="title is-3 has-text-centered">Counterfactual Driving Demos</h2>
-        <p class="subtitle has-text-centered demo-intro">Matched controls across rain, snow, reconstructed routes, and signed road geometry.</p>
-        <div id="results-carousel" class="carousel results-carousel">
-          <div class="item">
-            <video autoplay controls muted loop playsinline poster="assets/images/cover.jpg"><source src="assets/videos/rain-control.mp4" type="video/mp4"></video>
-            <div class="carousel-caption"><strong>Rain-rate control</strong><span>Sunny and 10/25/50 mm/h rain under matched braking controls.</span></div>
-          </div>
-          <div class="item">
-            <video autoplay controls muted loop playsinline poster="assets/images/cover.jpg"><source src="assets/videos/snow-control.mp4" type="video/mp4"></video>
-            <div class="carousel-caption"><strong>Snow-rate control</strong><span>Sunny and 0.5/1/3 mm/h SWE snow with accumulation and particles.</span></div>
-          </div>
-          <div class="item">
-            <video autoplay controls muted loop playsinline poster="assets/images/cover.jpg"><source src="assets/videos/multiscene.mp4" type="video/mp4"></video>
-            <div class="carousel-caption"><strong>Multi-scene transfer</strong><span>Rain control across four reconstructed routes.</span></div>
-          </div>
-          <div class="item">
-            <video autoplay controls muted loop playsinline poster="assets/images/cover.jpg"><source src="assets/videos/road-hazards.mp4" type="video/mp4"></video>
-            <div class="carousel-caption"><strong>Signed road hazards</strong><span>Speed-hump and road-depression events with synchronized heave and pitch.</span></div>
-          </div>
-        </div>
+  <section class="section demo-gallery-section" id="demos">
+    <div class="container is-max-desktop">
+      <div class="has-text-centered">
+        <p class="publication-kicker">Video gallery</p>
+        <h2 class="title is-3">Counterfactual Driving Demos</h2>
+        <p class="subtitle demo-intro">Explore individual weather rates, signed road events, and reconstructed routes instead of a single compiled comparison.</p>
       </div>
+
+      <nav class="demo-category-nav" aria-label="Jump to video category">
+        <a href="#demo-rain"><span>Rain</span><small>4 videos</small></a>
+        <a href="#demo-snow"><span>Snow</span><small>5 videos</small></a>
+        <a href="#demo-speed-bump"><span>Speed Bump</span><small>3 videos</small></a>
+        <a href="#demo-sunken-road"><span>Sunken Road</span><small>3 videos</small></a>
+        <a href="#demo-multiscene"><span>Multi-scene</span><small>5 videos</small></a>
+      </nav>
+
+      <section class="demo-group" id="demo-rain" aria-labelledby="demo-rain-title">
+        <header class="demo-group-header">
+          <div><p class="result-kicker">Weather control</p><h3 class="title is-4" id="demo-rain-title">Rain-rate sweep</h3></div>
+          <p>Primary quantitative scene under matched 60 km/h initial speed and 2.3 MPa braking input.</p>
+        </header>
+        <div class="demo-grid">
+          <figure class="demo-card">
+            <div class="demo-media"><video class="demo-video js-lazy-video" controls muted loop playsinline preload="none" poster="assets/videos/gallery/rain/sunny.webp" aria-label="Sunny control video"><source data-src="assets/videos/gallery/rain/sunny.mp4" type="video/mp4"></video><span class="demo-badge">Clear</span></div>
+            <figcaption><strong>Sunny control</strong><span>Dry-road reference with the same braking protocol.</span></figcaption><noscript><a href="assets/videos/gallery/rain/sunny.mp4">Open sunny control video</a></noscript>
+          </figure>
+          <figure class="demo-card">
+            <div class="demo-media"><video class="demo-video js-lazy-video" controls muted loop playsinline preload="none" poster="assets/videos/gallery/rain/rain-10.webp" aria-label="Rain at 10 millimeters per hour"><source data-src="assets/videos/gallery/rain/rain-10.mp4" type="video/mp4"></video><span class="demo-badge">10 mm/h</span></div>
+            <figcaption><strong>Light rain</strong><span>Pose-bound rain particles and wet-road response at 10 mm/h.</span></figcaption><noscript><a href="assets/videos/gallery/rain/rain-10.mp4">Open Rain 10 video</a></noscript>
+          </figure>
+          <figure class="demo-card">
+            <div class="demo-media"><video class="demo-video js-lazy-video" controls muted loop playsinline preload="none" poster="assets/videos/gallery/rain/rain-25.webp" aria-label="Rain at 25 millimeters per hour"><source data-src="assets/videos/gallery/rain/rain-25.mp4" type="video/mp4"></video><span class="demo-badge">25 mm/h</span></div>
+            <figcaption><strong>Moderate rain</strong><span>Higher water-film state and friction-dependent braking at 25 mm/h.</span></figcaption><noscript><a href="assets/videos/gallery/rain/rain-25.mp4">Open Rain 25 video</a></noscript>
+          </figure>
+          <figure class="demo-card">
+            <div class="demo-media"><video class="demo-video js-lazy-video" controls muted loop playsinline preload="none" poster="assets/videos/gallery/rain/rain-50.webp" aria-label="Rain at 50 millimeters per hour"><source data-src="assets/videos/gallery/rain/rain-50.mp4" type="video/mp4"></video><span class="demo-badge">50 mm/h</span></div>
+            <figcaption><strong>Heavy rain</strong><span>Most severe rain condition in the primary matched-control sweep.</span></figcaption><noscript><a href="assets/videos/gallery/rain/rain-50.mp4">Open Rain 50 video</a></noscript>
+          </figure>
+        </div>
+      </section>
+
+      <section class="demo-group" id="demo-snow" aria-labelledby="demo-snow-title">
+        <header class="demo-group-header">
+          <div><p class="result-kicker">Weather control</p><h3 class="title is-4" id="demo-snow-title">Snow-rate sweep</h3></div>
+          <p>Stable static accumulation and live particles across the complete image under the same primary-scene braking input.</p>
+        </header>
+        <div class="demo-grid">
+          <figure class="demo-card">
+            <div class="demo-media"><video class="demo-video js-lazy-video" controls muted loop playsinline preload="none" poster="assets/videos/gallery/rain/sunny.webp" aria-label="Sunny control for the snow-rate sweep"><source data-src="assets/videos/gallery/rain/sunny.mp4" type="video/mp4"></video><span class="demo-badge">Clear</span></div>
+            <figcaption><strong>Sunny control</strong><span>Shared clear-weather reference for the snow-rate comparison.</span></figcaption><noscript><a href="assets/videos/gallery/rain/sunny.mp4">Open sunny control video</a></noscript>
+          </figure>
+          <figure class="demo-card">
+            <div class="demo-media"><video class="demo-video js-lazy-video" controls muted loop playsinline preload="none" poster="assets/videos/gallery/snow/snow-0p5.webp" aria-label="Snow at 0.5 millimeters per hour snow-water equivalent"><source data-src="assets/videos/gallery/snow/snow-0p5.mp4" type="video/mp4"></video><span class="demo-badge">0.5 mm/h SWE</span></div>
+            <figcaption><strong>Light snow</strong><span>Low-rate accumulation with dynamic Snow5D particles.</span></figcaption><noscript><a href="assets/videos/gallery/snow/snow-0p5.mp4">Open Snow 0.5 video</a></noscript>
+          </figure>
+          <figure class="demo-card">
+            <div class="demo-media"><video class="demo-video js-lazy-video" controls muted loop playsinline preload="none" poster="assets/videos/gallery/snow/snow-1.webp" aria-label="Snow at 1 millimeter per hour snow-water equivalent"><source data-src="assets/videos/gallery/snow/snow-1.mp4" type="video/mp4"></video><span class="demo-badge">1 mm/h SWE</span></div>
+            <figcaption><strong>Snow 1</strong><span>Validated full-component rerender with stable post-stop accumulation.</span></figcaption><noscript><a href="assets/videos/gallery/snow/snow-1.mp4">Open Snow 1 video</a></noscript>
+          </figure>
+          <figure class="demo-card">
+            <div class="demo-media"><video class="demo-video js-lazy-video" controls muted loop playsinline preload="none" poster="assets/videos/gallery/snow/snow-2.webp" aria-label="Snow at 2 millimeters per hour snow-water equivalent"><source data-src="assets/videos/gallery/snow/snow-2.mp4" type="video/mp4"></video><span class="demo-badge">2 mm/h SWE</span></div>
+            <figcaption><strong>Snow 2</strong><span>Denser accumulation and particles from the validated full rerender.</span></figcaption><noscript><a href="assets/videos/gallery/snow/snow-2.mp4">Open Snow 2 video</a></noscript>
+          </figure>
+          <figure class="demo-card">
+            <div class="demo-media"><video class="demo-video js-lazy-video" controls muted loop playsinline preload="none" poster="assets/videos/gallery/snow/snow-3.webp" aria-label="Snow at 3 millimeters per hour snow-water equivalent"><source data-src="assets/videos/gallery/snow/snow-3.mp4" type="video/mp4"></video><span class="demo-badge">3 mm/h SWE</span></div>
+            <figcaption><strong>Heavy snow</strong><span>Highest stable snow condition used by the paper media protocol.</span></figcaption><noscript><a href="assets/videos/gallery/snow/snow-3.mp4">Open Snow 3 video</a></noscript>
+          </figure>
+        </div>
+      </section>
+
+      <section class="demo-group" id="demo-speed-bump" aria-labelledby="demo-speed-bump-title">
+        <header class="demo-group-header">
+          <div><p class="result-kicker">Signed road geometry</p><h3 class="title is-4" id="demo-speed-bump-title">Speed bump</h3></div>
+          <p>One shared positive road profile drives visible geometry, axle excitation, pitch, heave, and camera motion at 40 km/h and 1.0 MPa braking.</p>
+        </header>
+        <div class="demo-grid demo-grid-three">
+          <figure class="demo-card">
+            <div class="demo-media"><video class="demo-video js-lazy-video" controls muted loop playsinline preload="none" poster="assets/videos/gallery/speed-bump/dry.webp" aria-label="Dry speed-bump event"><source data-src="assets/videos/gallery/speed-bump/dry.mp4" type="video/mp4"></video><span class="demo-badge">Dry</span></div>
+            <figcaption><strong>Dry speed bump</strong><span>Geometry reference on the additional reconstructed route.</span></figcaption><noscript><a href="assets/videos/gallery/speed-bump/dry.mp4">Open dry speed-bump video</a></noscript>
+          </figure>
+          <figure class="demo-card">
+            <div class="demo-media"><video class="demo-video js-lazy-video" controls muted loop playsinline preload="none" poster="assets/videos/gallery/speed-bump/rain-50.webp" aria-label="Speed bump under 50 millimeters per hour rain"><source data-src="assets/videos/gallery/speed-bump/rain-50.mp4" type="video/mp4"></video><span class="demo-badge">Rain 50</span></div>
+            <figcaption><strong>Rain + speed bump</strong><span>Heavy rain, wet-road friction, and positive geometry act together.</span></figcaption><noscript><a href="assets/videos/gallery/speed-bump/rain-50.mp4">Open rainy speed-bump video</a></noscript>
+          </figure>
+          <figure class="demo-card">
+            <div class="demo-media"><video class="demo-video js-lazy-video" controls muted loop playsinline preload="none" poster="assets/videos/gallery/speed-bump/snow-3.webp" aria-label="Speed bump under Snow 3 conditions"><source data-src="assets/videos/gallery/speed-bump/snow-3.mp4" type="video/mp4"></video><span class="demo-badge">Snow 3</span></div>
+            <figcaption><strong>Snow + speed bump</strong><span>Stable heavy snow combined with the same signed hump profile.</span></figcaption><noscript><a href="assets/videos/gallery/speed-bump/snow-3.mp4">Open snowy speed-bump video</a></noscript>
+          </figure>
+        </div>
+      </section>
+
+      <section class="demo-group" id="demo-sunken-road" aria-labelledby="demo-sunken-road-title">
+        <header class="demo-group-header">
+          <div><p class="result-kicker">Signed road geometry</p><h3 class="title is-4" id="demo-sunken-road-title">Sunken road / depression</h3></div>
+          <p>A negative road-height profile produces the complementary heave and pitch response under dry, rain, and snow conditions.</p>
+        </header>
+        <div class="demo-grid demo-grid-three">
+          <figure class="demo-card">
+            <div class="demo-media"><video class="demo-video js-lazy-video" controls muted loop playsinline preload="none" poster="assets/videos/gallery/sunken-road/dry.webp" aria-label="Dry sunken-road event"><source data-src="assets/videos/gallery/sunken-road/dry.mp4" type="video/mp4"></video><span class="demo-badge">Dry</span></div>
+            <figcaption><strong>Dry road depression</strong><span>Geometry reference for the signed negative road profile.</span></figcaption><noscript><a href="assets/videos/gallery/sunken-road/dry.mp4">Open dry sunken-road video</a></noscript>
+          </figure>
+          <figure class="demo-card">
+            <div class="demo-media"><video class="demo-video js-lazy-video" controls muted loop playsinline preload="none" poster="assets/videos/gallery/sunken-road/rain-50.webp" aria-label="Sunken road under 50 millimeters per hour rain"><source data-src="assets/videos/gallery/sunken-road/rain-50.mp4" type="video/mp4"></video><span class="demo-badge">Rain 50</span></div>
+            <figcaption><strong>Rain + depression</strong><span>Heavy rain with synchronized friction, negative geometry, and motion.</span></figcaption><noscript><a href="assets/videos/gallery/sunken-road/rain-50.mp4">Open rainy sunken-road video</a></noscript>
+          </figure>
+          <figure class="demo-card">
+            <div class="demo-media"><video class="demo-video js-lazy-video" controls muted loop playsinline preload="none" poster="assets/videos/gallery/sunken-road/snow-3.webp" aria-label="Sunken road under Snow 3 conditions"><source data-src="assets/videos/gallery/sunken-road/snow-3.mp4" type="video/mp4"></video><span class="demo-badge">Snow 3</span></div>
+            <figcaption><strong>Snow + depression</strong><span>Stable Snow 3 appearance over the same negative road event.</span></figcaption><noscript><a href="assets/videos/gallery/sunken-road/snow-3.mp4">Open snowy sunken-road video</a></noscript>
+          </figure>
+        </div>
+      </section>
+
+      <section class="demo-group" id="demo-multiscene" aria-labelledby="demo-multiscene-title">
+        <header class="demo-group-header">
+          <div><p class="result-kicker">Generalization</p><h3 class="title is-4" id="demo-multiscene-title">Multi-scene transfer</h3></div>
+          <p>Five anonymous reconstructed routes with pose-bound precipitation and true physical braking trajectories from 30 to 45 km/h.</p>
+        </header>
+        <div class="demo-grid">
+          <figure class="demo-card">
+            <div class="demo-media"><video class="demo-video js-lazy-video" controls muted loop playsinline preload="none" poster="assets/videos/gallery/scenes/scene-a-rain-50-30.webp" aria-label="Scene A under heavy rain at 30 kilometers per hour"><source data-src="assets/videos/gallery/scenes/scene-a-rain-50-30.mp4" type="video/mp4"></video><span class="demo-badge">A · 30 km/h</span></div>
+            <figcaption><strong>Scene A · Rain 50</strong><span>Heavy-rain braking at 30 km/h with 2.0 MPa input.</span></figcaption><noscript><a href="assets/videos/gallery/scenes/scene-a-rain-50-30.mp4">Open Scene A video</a></noscript>
+          </figure>
+          <figure class="demo-card">
+            <div class="demo-media"><video class="demo-video js-lazy-video" controls muted loop playsinline preload="none" poster="assets/videos/gallery/scenes/scene-b-rain-50-35.webp" aria-label="Scene B under heavy rain at 35 kilometers per hour"><source data-src="assets/videos/gallery/scenes/scene-b-rain-50-35.mp4" type="video/mp4"></video><span class="demo-badge">B · 35 km/h</span></div>
+            <figcaption><strong>Scene B · Rain 50</strong><span>Heavy-rain braking at 35 km/h on a second route.</span></figcaption><noscript><a href="assets/videos/gallery/scenes/scene-b-rain-50-35.mp4">Open Scene B video</a></noscript>
+          </figure>
+          <figure class="demo-card">
+            <div class="demo-media"><video class="demo-video js-lazy-video" controls muted loop playsinline preload="none" poster="assets/videos/gallery/scenes/scene-c-rain-50-depression-40.webp" aria-label="Scene C with heavy rain and a road depression at 40 kilometers per hour"><source data-src="assets/videos/gallery/scenes/scene-c-rain-50-depression-40.mp4" type="video/mp4"></video><span class="demo-badge">C · 40 km/h</span></div>
+            <figcaption><strong>Scene C · Rain + depression</strong><span>Rain 50 with a signed road depression and 1.0 MPa braking.</span></figcaption><noscript><a href="assets/videos/gallery/scenes/scene-c-rain-50-depression-40.mp4">Open Scene C video</a></noscript>
+          </figure>
+          <figure class="demo-card">
+            <div class="demo-media"><video class="demo-video js-lazy-video" controls muted loop playsinline preload="none" poster="assets/videos/gallery/scenes/scene-d-snow-3-40.webp" aria-label="Scene D under Snow 3 at 40 kilometers per hour"><source data-src="assets/videos/gallery/scenes/scene-d-snow-3-40.mp4" type="video/mp4"></video><span class="demo-badge">D · 40 km/h</span></div>
+            <figcaption><strong>Scene D · Snow 3</strong><span>Stable heavy-snow transfer with synchronized braking motion.</span></figcaption><noscript><a href="assets/videos/gallery/scenes/scene-d-snow-3-40.mp4">Open Scene D video</a></noscript>
+          </figure>
+          <figure class="demo-card">
+            <div class="demo-media"><video class="demo-video js-lazy-video" controls muted loop playsinline preload="none" poster="assets/videos/gallery/scenes/scene-e-rain-50-45.webp" aria-label="Scene E under heavy rain at 45 kilometers per hour"><source data-src="assets/videos/gallery/scenes/scene-e-rain-50-45.mp4" type="video/mp4"></video><span class="demo-badge">E · 45 km/h</span></div>
+            <figcaption><strong>Scene E · Rain 50</strong><span>Highest-speed held-out route in the compact media protocol.</span></figcaption><noscript><a href="assets/videos/gallery/scenes/scene-e-rain-50-45.mp4">Open Scene E video</a></noscript>
+          </figure>
+        </div>
+      </section>
     </div>
   </section>
 
