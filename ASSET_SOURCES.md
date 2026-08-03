@@ -2,6 +2,12 @@
 
 This file records the local sources used to assemble the draft project page. It is not a public license grant.
 
+## Website template
+
+- Structure and bundled Bulma/carousel assets are adapted from the [Nerfies project page](https://github.com/nerfies/nerfies.github.io).
+- The Nerfies website is licensed under CC BY-SA 4.0. See `TEMPLATE_ATTRIBUTION.md`.
+- Google Analytics from the original template is not included.
+
 ## Paper artifacts
 
 - Paper PDF: `/tmp/roves-build-main/AnonymousSubmission2027.pdf`
@@ -31,4 +37,3 @@ Vector PDFs were rasterized at high resolution and converted to WebP. Large PNGs
 ## Release reminder
 
 Before public deployment, confirm the redistribution/display terms and required acknowledgements for every dataset, simulator, baseline output, and model represented by these assets.
-

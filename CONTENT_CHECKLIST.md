@@ -33,7 +33,7 @@
 - 最新 Figure 6（无 H/D ratio）、Figure 7（`CarSim state reference`、`Body pitch`）。
 - 最新 9 页主文和 20 页 supplement。
 - Scope/limitation：静态或准静态 Waymo 场景、动态 agents 未重模拟、VGGT 指标限制、geometry-only empirical reference。
-- 移动端布局、键盘 tabs、reduced-motion、lazy images、单视频切换、alt text 和 focus 样式。
+- Nerfies/Bulma 学术主页结构、响应式布局、视频轮播、reduced-motion、alt text 和 BibTeX 复制。
 
 ## 3. 建议再准备的展示素材
 
@@ -111,17 +111,16 @@
 SmallWorldLab/musync-gs-site
 ```
 
-推荐页面顺序：
+当前 Nerfies 风格页面顺序：
 
-1. Hero + teaser
-2. Four-number proof strip
-3. Problem / conceptual gap
-4. Pipeline / three shared interfaces
-5. Interactive demos
-6. Four evidence tabs
-7. Matched protocols
-8. Scope and limitations
-9. Paper / supplement / code / data / BibTeX
+1. Publication title / anonymous authors / resource buttons
+2. Hero teaser
+3. Four-number proof strip
+4. Abstract / conceptual gap
+5. Counterfactual video carousel
+6. Pipeline / three shared interfaces
+7. CarSim / video / A2D2 evaluation blocks
+8. Visual controllability
+9. Scope / reproducibility / BibTeX
 
-这个顺序比简单复制 SceneFactory 页面更适合 muSync-GS：它先证明“同步响应确实可见”，再解释系统，而不是先让访客读长摘要。
-
+该版本使用 Nerfies 的经典 academic project-page 节奏，同时用 proof strip 和结果模块突出“同步响应确实可见”。

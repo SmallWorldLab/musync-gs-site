@@ -1,12 +1,12 @@
-# muSync-GS project page draft
+# muSync-GS project page
 
-This is a dependency-free static project page for:
+Academic project page for:
 
 > **muSync-GS: Physics-Synchronized Driving Video Synthesis for Weather and Geometric Road Hazards**
 
-The information flow is informed by the public SceneFactory project page, but the HTML, CSS, JavaScript, visual system, and components here are original. No Nerfies/Bulma template code is included.
+This revision is based on the public [Nerfies project-page template](https://github.com/nerfies/nerfies.github.io). The structure uses Bulma and the Nerfies carousel pattern, while the content, research media, typography accents, result modules, and responsive styling are customized for muSync-GS.
 
-## Preview locally
+## Local preview
 
 ```bash
 cd /home/yc8786/data4t/Yang/RoVES_project_page
@@ -15,60 +15,35 @@ python3 -m http.server 8000
 
 Open `http://localhost:8000`.
 
-## Current draft status
+## Draft status
 
-- The page intentionally keeps the authors anonymous.
-- Search indexing is disabled with `<meta name="robots" content="noindex, nofollow">`.
-- Paper and supplement buttons point to the current local compiled PDFs.
-- Code, public data, arXiv, final venue, contact, and BibTeX remain placeholders.
-- Five H.264, 1280×720, 10 fps, silent videos are already packaged for the page.
+- Authors and venue remain anonymous.
+- Search indexing is disabled with `noindex, nofollow`.
+- Paper and supplement point to packaged local PDFs.
+- Code, public data, arXiv, final venue, contact, and BibTeX remain release placeholders.
+- The GitHub Pages deployment should remain disabled until the anonymity and release decision is confirmed.
 
-Do **not** deploy publicly until the publication/anonymity decision is confirmed. See [CONTENT_CHECKLIST.md](CONTENT_CHECKLIST.md).
+See [CONTENT_CHECKLIST.md](CONTENT_CHECKLIST.md) before publication.
 
 ## Structure
 
 ```text
 .
 ├── index.html
-├── css/style.css
-├── js/main.js
+├── static/
+│   ├── css/
+│   └── js/
 ├── assets/
 │   ├── images/
 │   ├── papers/
 │   └── videos/
 ├── CONTENT_CHECKLIST.md
-└── .nojekyll
+├── ASSET_SOURCES.md
+└── TEMPLATE_ATTRIBUTION.md
 ```
 
-The page has no npm/build step and can be hosted directly with GitHub Pages.
+No build step is required. The repository can be served as a static site.
 
-## Fastest customization points
+## Template license
 
-Search `index.html` for:
-
-- `Anonymous project-page draft`
-- `Code soon`
-- `Citation placeholder`
-- `Authors withheld during review`
-- `Venue pending`
-- `noindex, nofollow`
-
-Update these only after the corresponding release details are approved.
-
-## Recommended deployment
-
-Use a separate repository such as `musync-gs-site` rather than adding website assets to the Overleaf repository.
-
-1. Create an empty GitHub repository.
-2. Commit this directory to its `main` branch.
-3. In **Settings → Pages**, publish from `main` / root.
-4. Add the final GitHub Pages URL to the paper after checking the review policy.
-5. Optionally add a custom domain and analytics after public release.
-
-## Asset notes
-
-- Current pipeline and Figure 7 web images were rasterized from the latest vector PDFs, avoiding stale labels.
-- Figure 6 contains no H/D ratio overlays.
-- The supplement PDF is the newly compiled 20-page version from commit `224e32e`.
-- Before release, confirm redistribution/display permissions for Waymo-derived frames and videos, A2D2-derived plots, and CarSim-derived figures.
-
+The Nerfies website is licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). This adapted website therefore retains visible attribution in the footer and is distributed under the same website-code license. Research media, PDFs, datasets, and third-party artifacts retain their own terms.
