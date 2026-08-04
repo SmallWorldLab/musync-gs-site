@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="./static/css/index.css?v=20260804e">
   <link rel="icon" href="./assets/images/favicon.svg" type="image/svg+xml">
 
   <script defer src="./static/js/fontawesome.all.min.js"></script>
@@ -297,8 +297,8 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered has-text-centered"><div class="column is-four-fifths"><h2 class="title is-3">Controllable Visual Synthesis</h2><p class="subtitle">Severity-ordered weather and localized dry-road geometry under matched protocols.</p></div></div>
         <div class="columns is-centered">
-          <div class="column"><figure class="visual-card"><img src="assets/images/weather-grid.webp" alt="Weather controllability comparison across baselines and muSync-GS."><figcaption><strong>Weather control.</strong> Rain and snow severity ordering: 1.000 / 1.000.</figcaption></figure></div>
-          <div class="column"><figure class="visual-card"><img src="assets/images/road-edit.webp" alt="Road-edit comparison for speed humps and road depressions."><figcaption><strong>Road geometry.</strong> Localized-edit rate 0.711; temporal mask IoU 0.603.</figcaption></figure></div>
+          <div class="column"><figure class="visual-card"><div class="visual-card-media"><img src="assets/images/weather-grid.webp" alt="Weather controllability comparison across baselines and muSync-GS."></div><figcaption><strong>Weather control.</strong> Rain and snow both follow the intended progression from mild to severe conditions.</figcaption></figure></div>
+          <div class="column"><figure class="visual-card"><div class="visual-card-media"><img src="assets/images/road-edit.webp" alt="Road-edit comparison for speed humps and road depressions."></div><figcaption><strong>Road geometry.</strong> Localized edits remain spatially focused (0.711), with consistent temporal masks (IoU 0.603).</figcaption></figure></div>
         </div>
       </div>
     </div>
