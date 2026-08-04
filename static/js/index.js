@@ -57,10 +57,82 @@ document.addEventListener('DOMContentLoaded', () => {
     galleryVideos.forEach(hydrateVideo);
   }
 
+  const getGroupVideos = (groupName) => galleryVideos.filter(
+    (video) => video.dataset.comparisonGroup === groupName
+  );
+  let activeComparisonGroup = null;
+
+  const pauseOutsideGroup = (groupName) => {
+    galleryVideos.forEach((video) => {
+      if (video.dataset.comparisonGroup !== groupName) video.pause();
+    });
+  };
+
+  const playComparison = async (groupName, restart = false) => {
+    const members = getGroupVideos(groupName);
+    if (!members.length) return;
+
+    members.forEach(hydrateVideo);
+    pauseOutsideGroup(groupName);
+    activeComparisonGroup = groupName;
+
+    const master = members.find((video) => video.dataset.comparisonMaster === 'true') || members[0];
+    if (restart) master.currentTime = 0;
+    const targetTime = master.currentTime;
+    members.forEach((video) => {
+      if (Math.abs(video.currentTime - targetTime) > 0.04) video.currentTime = targetTime;
+    });
+
+    await Promise.allSettled(members.map((video) => video.play()));
+  };
+
+  const pauseComparison = (groupName) => {
+    getGroupVideos(groupName).forEach((video) => video.pause());
+    if (activeComparisonGroup === groupName) activeComparisonGroup = null;
+  };
+
+  document.querySelectorAll('[data-comparison-controls]').forEach((toolbar) => {
+    toolbar.addEventListener('click', (event) => {
+      const button = event.target.closest('[data-comparison-action]');
+      if (!button) return;
+      const groupName = toolbar.dataset.comparisonControls;
+      const action = button.dataset.comparisonAction;
+      if (action === 'play') playComparison(groupName);
+      if (action === 'pause') pauseComparison(groupName);
+      if (action === 'restart') playComparison(groupName, true);
+    });
+  });
+
+  const comparisonGroups = new Set(
+    galleryVideos.map((video) => video.dataset.comparisonGroup).filter(Boolean)
+  );
+  comparisonGroups.forEach((groupName) => {
+    const members = getGroupVideos(groupName);
+    const master = members.find((video) => video.dataset.comparisonMaster === 'true') || members[0];
+    const followers = members.filter((video) => video !== master);
+    const syncFollowers = () => {
+      if (activeComparisonGroup !== groupName) return;
+      followers.forEach((video) => {
+        if (Math.abs(video.currentTime - master.currentTime) > 0.12) {
+          video.currentTime = master.currentTime;
+        }
+      });
+    };
+    master.addEventListener('timeupdate', syncFollowers);
+    master.addEventListener('seeking', syncFollowers);
+    master.addEventListener('pause', () => {
+      if (activeComparisonGroup !== groupName) return;
+      followers.forEach((video) => video.pause());
+      activeComparisonGroup = null;
+    });
+  });
+
   galleryVideos.forEach((video) => {
     video.addEventListener('pointerenter', () => hydrateVideo(video), { once: true });
     video.addEventListener('focus', () => hydrateVideo(video), { once: true });
     video.addEventListener('play', () => {
+      if (activeComparisonGroup === video.dataset.comparisonGroup) return;
+      activeComparisonGroup = null;
       galleryVideos.forEach((other) => {
         if (other !== video) other.pause();
       });

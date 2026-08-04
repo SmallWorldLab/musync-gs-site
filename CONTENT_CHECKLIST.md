@@ -23,13 +23,11 @@
 - 完整英文标题、meta description 和一句话核心卖点。
 - 非论文式长摘要，而是适合网页阅读的 problem statement。
 - 最新 pipeline 和 conceptual-gap 图。
-- 34.5 秒最终匿名总览视频。
-- 20 个独立展示卡片 / 19 个唯一视频：
-  - Sunny + Rain 10/25/50；
-  - Sunny + Snow 0.5/1/2/3；
-  - Speed bump × Dry/Rain 50/Snow 3；
-  - Sunken road × Dry/Rain 50/Snow 3；
-  - 5 个匿名 multi-scene 路线。
+- 14.1 秒 project-page 专用匿名总览视频；Media Supplement ZIP 保持不变。
+- 6 个聚焦展示卡片 / 6 个唯一视频：
+  - Rain braking：Sunny / Rain 2/10/25/50 五级刹车矩阵，完整 5.5 秒；
+  - Snow braking：Snow 0/0.5/1/2/3 五级刹车矩阵，6.2 秒；保留稳定、贴合路面的积雪，并在 Snow 2/3 停止后冻结尾帧之前结束；
+  - Road hazards：Speed Hump / Sunken Road 分别展示 Rain 0/2/10/25/50 与 Snow 0/0.5/1/2/3，四条 5.2 秒矩阵均包含接近、前后轴接触、车身响应和稳定恢复。
 - Frozen CarSim、VGGT video diagnostics、A2D2、visual-control 四组结果模块。
 - 最新 Figure 6（无 H/D ratio）、Figure 7（`CarSim state reference`、`Body pitch`）。
 - 最新 9 页主文和 20 页 supplement。
@@ -41,7 +39,7 @@
 ### P0：很值得补
 
 1. **8–12 秒 hero teaser**
-   - 当前使用最终 34.5 秒 media-supplement overview，信息完整但首屏偏长。
+   - 当前为 24.5 秒并移除 multi-scene，但首屏仍可进一步压到 8–12 秒。
    - 更理想的是另剪一个首屏版本：Sunny → Rain-50 braking → speed hump → Snow-3 depression，每段 2–3 秒。
 
 2. **统一的 baseline side-by-side 视频**
@@ -49,9 +47,9 @@
    - Geometry：hump / depression，同样的 approach-contact-after timing。
    - 页面当前采用静态 Figure 5/6；有成套视频后说服力会更强。
 
-3. **视频同步 telemetry overlay**
-   - 至少显示 speed、body pitch、route progress 中的 1–2 个。
-   - 让访客不用读方法也能看出“视觉变化与物理响应同步”。
+3. **Raw / Telemetry 一键切换**
+   - 当前 road-response 区域使用四条五级阶梯成片，页面不叠加 telemetry，以免遮挡道路事件和天气差异。
+   - 若还需要逐帧读取 speed、pitch 与 heave，可为四张 response 卡增加同窗口 Final matrix / Telemetry 切换。
 
 4. **Social preview 图（1200×630）**
    - 当前直接使用 media cover。
@@ -59,7 +57,7 @@
 
 ### P1：有时间再补
 
-- 五个 Waymo 场景已经具有独立 poster 和按需加载视频。
+- 如需强调跨场景泛化，可在解除匿名或版面允许时恢复独立 multi-scene 页面；当前主画廊按反馈只保留主场景天气对比。
 - 一张简化版 Table 3，而不是把论文整张表塞进网页。
 - 30–60 秒 narrated overview 或字幕版 demo。
 - 每支视频的英文 transcript / caption 文件（WebVTT）。
@@ -118,7 +116,7 @@ SmallWorldLab/musync-gs-site
 2. Hero teaser
 3. Four-number proof strip
 4. Abstract / conceptual gap
-5. Counterfactual video gallery: Rain / Snow / Speed Bump / Sunken Road / Multi-scene
+5. Role-separated video gallery: cross-route weather braking / dedicated weather-conditioned road hazards
 6. Pipeline / three shared interfaces
 7. CarSim / video / A2D2 evaluation blocks
 8. Visual controllability

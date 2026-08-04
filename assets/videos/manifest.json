@@ -1,14 +1,16 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "project": "muSync-GS",
   "hero": {
     "file": "main-demo.mp4",
-    "description": "Final 34.5-second media-supplement overview.",
+    "description": "A 14.1-second project-page overview of cross-route rain and stable snow braking followed by weather-conditioned road hazards.",
     "codec": "H.264",
     "resolution": [1280, 720],
     "fps": 10,
+    "duration_s": 14.1,
     "audio": false
   },
   "gallery_manifest": "gallery/manifest.json",
-  "loading_policy": "Gallery videos use poster images, preload=none, and near-viewport source hydration."
+  "loading_policy": "Gallery videos use poster images, preload=none, and near-viewport source hydration.",
+  "comparison_policy": "The four equal-duration road-hazard matrices expose shared synchronized play, pause, and restart controls."
 }

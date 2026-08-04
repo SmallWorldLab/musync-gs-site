@@ -16,13 +16,22 @@ This file records the local sources used to assemble the draft project page. It 
 
 ## Media
 
-Final source archive:
+The packaged media supplement remains unchanged:
 
 `/data/data_4t/ResearchStudio/submission/musync_gs_media_supplement.zip`
 
-The hero uses the final 34.5-second `00_MAIN_DEMO.mp4`. The gallery uses the individual source clips recorded by `/data/data_4t/ResearchStudio/scripts/build_musync_media_supplement.py`, plus the corresponding high-resolution Road Scene B speed-bump and sunken-road matrix. High-bitrate 960×640 sources were web-encoded to H.264 at a maximum width of 720 pixels; the small primary rain clips were remuxed with faststart. Every gallery clip has a WebP poster.
+The project-page hero is a separate 14.1-second web edit. It is not written back into the media supplement ZIP.
 
-The public page uses anonymous scene aliases. Semantic media metadata is recorded in `assets/videos/gallery/manifest.json`; source selection logic remains documented by the official supplement build script rather than embedded in page HTML.
+Project-page videos are role-separated by scene:
+
+- Rain braking: Scene 113792 from `/data/data_4t/Yang/RoVES_repro/outputs/roves_parametric_weather/113792/20260728-straight-flat-113792-road2mpa-center28-v1`. The page uses Sunny / Rain 2 / 10 / 25 / 50 mm/h in a 5.5-second 3 + 2 matrix. Under the matched 40 km/h, 2.0 MPa braking command, Rain 50 increases stopping distance by 5.58 m relative to Sunny.
+- Snow braking: the page uses the stable formal release at `/data/data_4t/ResearchStudio/artifacts/official_snow_multiscene_stable_20260729/342571/snow5`. Snow 0 / 0.5 / 1 / 2 / 3 mm/h SWE are shown in a 6.2-second 3 + 2 matrix. The approved lossless composition retains the road-accumulation residual with fractional static and semantic sampling. The crop reaches the Snow 2/3 stop at 6.1 seconds and ends before the static post-stop hold.
+- Weather-conditioned road hazards: Scene 938501 from `/data/data_4t/Yang/RoVES_repro/outputs/roves_m123_final_weather/938501/20260721-m123-rain5x3-official-v1` and `/data/data_4t/Yang/RoVES_repro/outputs/roves_m123_final_weather/938501/20260721-m123-snow5x3-official-v1`. Four 5.2-second matrices cover Speed Hump / Sunken Road under the five rain and five snow levels. The crop retains approach, axle contact, body response, and at least one second of settled recovery.
+- Scene 938501 snow uses the approved lossless independent road-accumulation and particle-residual composition documented by the official Snow5D release. The ZIP itself is not regenerated or modified.
+
+High-bitrate sources were web-encoded to 1280×720 H.264 with faststart. Every displayed gallery clip has a WebP poster.
+
+Semantic media metadata and response windows are recorded in `assets/videos/gallery/manifest.json`.
 
 ## Figures
 

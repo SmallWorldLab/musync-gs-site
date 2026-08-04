@@ -62,13 +62,8 @@
             <div class="column has-text-centered">
               <div class="publication-links">
                 <span class="link-block">
-                  <a href="assets/papers/musync-gs-paper.pdf" target="_blank" rel="noopener" class="external-link button is-normal is-rounded is-dark">
+                  <a href="assets/papers/musync-gs-paper.pdf?v=20260803" target="_blank" rel="noopener" class="external-link button is-normal is-rounded is-dark">
                     <span class="icon"><i class="fas fa-file-pdf"></i></span><span>Paper</span>
-                  </a>
-                </span>
-                <span class="link-block">
-                  <a href="assets/papers/musync-gs-supplement.pdf" target="_blank" rel="noopener" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon"><i class="fas fa-file-alt"></i></span><span>Supplement</span>
                   </a>
                 </span>
                 <span class="link-block">
@@ -94,7 +89,7 @@
       <div class="hero-body">
         <div class="video-frame">
           <video id="teaser" autoplay muted loop playsinline controls poster="assets/images/cover.jpg">
-            <source src="assets/videos/main-demo.mp4" type="video/mp4">
+            <source src="assets/videos/main-demo.mp4?v=20260804d" type="video/mp4">
           </video>
         </div>
         <h2 class="subtitle has-text-centered teaser-caption">
@@ -144,139 +139,63 @@
     <div class="container is-max-desktop">
       <div class="has-text-centered">
         <p class="publication-kicker">Video gallery</p>
-        <h2 class="title is-3">Counterfactual Driving Demos</h2>
-        <p class="subtitle demo-intro">Explore individual weather rates, signed road events, and reconstructed routes instead of a single compiled comparison.</p>
+        <h2 class="title is-3">Role-Separated Counterfactual Demos</h2>
+        <p class="subtitle demo-intro">Weather-conditioned braking is demonstrated on two independent reconstructed routes. A dedicated third route is reserved for matched rain and snow response to Speed Hump and Sunken Road hazards.</p>
       </div>
 
       <nav class="demo-category-nav" aria-label="Jump to video category">
-        <a href="#demo-rain"><span>Rain</span><small>4 videos</small></a>
-        <a href="#demo-snow"><span>Snow</span><small>5 videos</small></a>
-        <a href="#demo-speed-bump"><span>Speed Bump</span><small>3 videos</small></a>
-        <a href="#demo-sunken-road"><span>Sunken Road</span><small>3 videos</small></a>
-        <a href="#demo-multiscene"><span>Multi-scene</span><small>5 videos</small></a>
+        <a href="#demo-braking"><span>Weather braking</span><small>2 cross-scene matrices</small></a>
+        <a href="#demo-road-response"><span>Road × weather</span><small>4 matched hazard matrices</small></a>
       </nav>
 
-      <section class="demo-group" id="demo-rain" aria-labelledby="demo-rain-title">
+      <section class="demo-group" id="demo-braking" aria-labelledby="demo-braking-title">
         <header class="demo-group-header">
-          <div><p class="result-kicker">Weather control</p><h3 class="title is-4" id="demo-rain-title">Rain-rate sweep</h3></div>
-          <p>Primary quantitative scene under matched 60 km/h initial speed and 2.3 MPa braking input.</p>
+          <div><p class="result-kicker">Independent scenes · matched braking within each matrix</p><h3 class="title is-4" id="demo-braking-title">Weather-Conditioned Braking</h3></div>
+          <div class="demo-group-summary">
+            <p>Rain and snow use different scenes so the road-event scene remains dedicated to geometric hazards. Each five-panel matrix shares one clock, 40 km/h initial speed, and a 2.0 MPa ABS braking command.</p>
+          </div>
         </header>
-        <div class="demo-grid">
-          <figure class="demo-card">
-            <div class="demo-media"><video class="demo-video js-lazy-video" controls muted loop playsinline preload="none" poster="assets/videos/gallery/rain/sunny.webp" aria-label="Sunny control video"><source data-src="assets/videos/gallery/rain/sunny.mp4" type="video/mp4"></video><span class="demo-badge">Clear</span></div>
-            <figcaption><strong>Sunny control</strong><span>Dry-road reference with the same braking protocol.</span></figcaption><noscript><a href="assets/videos/gallery/rain/sunny.mp4">Open sunny control video</a></noscript>
+        <div class="demo-grid demo-grid-weather">
+          <figure class="demo-card response-card step-matrix-card">
+            <div class="demo-media"><video class="demo-video js-lazy-video" controls muted loop playsinline preload="none" poster="assets/videos/gallery/braking/rain-braking-five-step.webp?v=20260804d" aria-label="Braking response from sunny through Rain 50"><source data-src="assets/videos/gallery/braking/rain-braking-five-step.mp4?v=20260804d" type="video/mp4"></video><span class="demo-badge">RAIN · 0 → 50 mm/h</span></div>
+            <figcaption><strong>Rain braking ladder</strong><span>Sunny, Rain 2, 10, 25, and 50 mm/h share the same braking input. Rain 50 extends stopping distance by 5.58 m relative to sunny.</span><div class="response-metrics"><span><b>5.5 s</b> complete stop</span><span><b>+5.58 m</b> at Rain 50</span></div></figcaption><noscript><a href="assets/videos/gallery/braking/rain-braking-five-step.mp4">Open rain braking matrix</a></noscript>
           </figure>
-          <figure class="demo-card">
-            <div class="demo-media"><video class="demo-video js-lazy-video" controls muted loop playsinline preload="none" poster="assets/videos/gallery/rain/rain-10.webp" aria-label="Rain at 10 millimeters per hour"><source data-src="assets/videos/gallery/rain/rain-10.mp4" type="video/mp4"></video><span class="demo-badge">10 mm/h</span></div>
-            <figcaption><strong>Light rain</strong><span>Pose-bound rain particles and wet-road response at 10 mm/h.</span></figcaption><noscript><a href="assets/videos/gallery/rain/rain-10.mp4">Open Rain 10 video</a></noscript>
-          </figure>
-          <figure class="demo-card">
-            <div class="demo-media"><video class="demo-video js-lazy-video" controls muted loop playsinline preload="none" poster="assets/videos/gallery/rain/rain-25.webp" aria-label="Rain at 25 millimeters per hour"><source data-src="assets/videos/gallery/rain/rain-25.mp4" type="video/mp4"></video><span class="demo-badge">25 mm/h</span></div>
-            <figcaption><strong>Moderate rain</strong><span>Higher water-film state and friction-dependent braking at 25 mm/h.</span></figcaption><noscript><a href="assets/videos/gallery/rain/rain-25.mp4">Open Rain 25 video</a></noscript>
-          </figure>
-          <figure class="demo-card">
-            <div class="demo-media"><video class="demo-video js-lazy-video" controls muted loop playsinline preload="none" poster="assets/videos/gallery/rain/rain-50.webp" aria-label="Rain at 50 millimeters per hour"><source data-src="assets/videos/gallery/rain/rain-50.mp4" type="video/mp4"></video><span class="demo-badge">50 mm/h</span></div>
-            <figcaption><strong>Heavy rain</strong><span>Most severe rain condition in the primary matched-control sweep.</span></figcaption><noscript><a href="assets/videos/gallery/rain/rain-50.mp4">Open Rain 50 video</a></noscript>
+          <figure class="demo-card response-card step-matrix-card">
+            <div class="demo-media"><video class="demo-video js-lazy-video" controls muted loop playsinline preload="none" poster="assets/videos/gallery/braking/snow-braking-five-step.webp?v=20260804d" aria-label="Braking response from Snow 0 through Snow 3 with stable road-attached accumulation"><source data-src="assets/videos/gallery/braking/snow-braking-five-step.mp4?v=20260804d" type="video/mp4"></video><span class="demo-badge">SNOW · 0 → 3 mm/h SWE</span></div>
+            <figcaption><strong>Snow braking ladder</strong><span>Snow 0, 0.5, 1, 2, and 3 retain road-attached accumulation, stable winter appearance, and falling snow. The 6.2-second crop reaches the Snow 2/3 stop without holding frozen tail frames.</span><div class="response-metrics"><span><b>6.2 s</b> stop window</span><span><b>stable</b> road accumulation</span></div></figcaption><noscript><a href="assets/videos/gallery/braking/snow-braking-five-step.mp4">Open snow braking matrix</a></noscript>
           </figure>
         </div>
       </section>
 
-      <section class="demo-group" id="demo-snow" aria-labelledby="demo-snow-title">
+      <section class="demo-group" id="demo-road-response" aria-labelledby="demo-road-response-title">
         <header class="demo-group-header">
-          <div><p class="result-kicker">Weather control</p><h3 class="title is-4" id="demo-snow-title">Snow-rate sweep</h3></div>
-          <p>Stable static accumulation and live particles across the complete image under the same primary-scene braking input.</p>
+          <div><p class="result-kicker">Dedicated road-hazard route · five matched weather levels</p><h3 class="title is-4" id="demo-road-response-title">Weather-Conditioned Road Hazards</h3></div>
+          <div class="demo-group-summary">
+            <p>The dedicated route is used only for signed road hazards. Each 5.2-second matrix retains the visible feature, front- and rear-axle contact, body response, and a settled recovery at normal playback speed.</p>
+            <div class="comparison-toolbar" data-comparison-controls="road-response" aria-label="Road response comparison controls">
+              <span>Matched playback</span>
+              <button type="button" data-comparison-action="play">Play all</button>
+              <button type="button" data-comparison-action="pause">Pause</button>
+              <button type="button" data-comparison-action="restart">Restart</button>
+            </div>
+          </div>
         </header>
-        <div class="demo-grid">
-          <figure class="demo-card">
-            <div class="demo-media"><video class="demo-video js-lazy-video" controls muted loop playsinline preload="none" poster="assets/videos/gallery/rain/sunny.webp" aria-label="Sunny control for the snow-rate sweep"><source data-src="assets/videos/gallery/rain/sunny.mp4" type="video/mp4"></video><span class="demo-badge">Clear</span></div>
-            <figcaption><strong>Sunny control</strong><span>Shared clear-weather reference for the snow-rate comparison.</span></figcaption><noscript><a href="assets/videos/gallery/rain/sunny.mp4">Open sunny control video</a></noscript>
+        <div class="demo-grid demo-grid-pair">
+          <figure class="demo-card response-card step-matrix-card">
+            <div class="demo-media"><video class="demo-video js-lazy-video" data-comparison-group="road-response" data-comparison-master="true" controls muted loop playsinline preload="none" poster="assets/videos/gallery/road-response/speed-hump-rain-five-step.webp?v=20260804d" aria-label="Speed hump response across sunny and four rain levels"><source data-src="assets/videos/gallery/road-response/speed-hump-rain-five-step.mp4?v=20260804d" type="video/mp4"></video><span class="demo-badge">RAIN · 0 → 50 mm/h</span></div>
+            <figcaption><strong>Speed Hump · rain ladder</strong><span>Sunny, Rain 2, 10, 25, and 50 mm/h traverse the same positive road-height feature with weather-dependent crossing speed.</span><div class="response-metrics"><span><b>5.2 s</b> full event</span><span><b>2.3 MPa</b> coupled brake</span></div></figcaption><noscript><a href="assets/videos/gallery/road-response/speed-hump-rain-five-step.mp4">Open Speed Hump rain matrix</a></noscript>
           </figure>
-          <figure class="demo-card">
-            <div class="demo-media"><video class="demo-video js-lazy-video" controls muted loop playsinline preload="none" poster="assets/videos/gallery/snow/snow-0p5.webp" aria-label="Snow at 0.5 millimeters per hour snow-water equivalent"><source data-src="assets/videos/gallery/snow/snow-0p5.mp4" type="video/mp4"></video><span class="demo-badge">0.5 mm/h SWE</span></div>
-            <figcaption><strong>Light snow</strong><span>Low-rate accumulation with dynamic Snow5D particles.</span></figcaption><noscript><a href="assets/videos/gallery/snow/snow-0p5.mp4">Open Snow 0.5 video</a></noscript>
+          <figure class="demo-card response-card step-matrix-card">
+            <div class="demo-media"><video class="demo-video js-lazy-video" data-comparison-group="road-response" controls muted loop playsinline preload="none" poster="assets/videos/gallery/road-response/sunken-road-rain-five-step.webp?v=20260804d" aria-label="Sunken road response across sunny and four rain levels"><source data-src="assets/videos/gallery/road-response/sunken-road-rain-five-step.mp4?v=20260804d" type="video/mp4"></video><span class="demo-badge">RAIN · 0 → 50 mm/h</span></div>
+            <figcaption><strong>Sunken Road · rain ladder</strong><span>The same rain ladder crosses the negative road-height feature and retains the full complementary heave and pitch recovery.</span><div class="response-metrics"><span><b>5.2 s</b> full event</span><span><b>complete</b> recovery</span></div></figcaption><noscript><a href="assets/videos/gallery/road-response/sunken-road-rain-five-step.mp4">Open Sunken Road rain matrix</a></noscript>
           </figure>
-          <figure class="demo-card">
-            <div class="demo-media"><video class="demo-video js-lazy-video" controls muted loop playsinline preload="none" poster="assets/videos/gallery/snow/snow-1.webp" aria-label="Snow at 1 millimeter per hour snow-water equivalent"><source data-src="assets/videos/gallery/snow/snow-1.mp4" type="video/mp4"></video><span class="demo-badge">1 mm/h SWE</span></div>
-            <figcaption><strong>Snow 1</strong><span>Validated full-component rerender with stable post-stop accumulation.</span></figcaption><noscript><a href="assets/videos/gallery/snow/snow-1.mp4">Open Snow 1 video</a></noscript>
+          <figure class="demo-card response-card step-matrix-card">
+            <div class="demo-media"><video class="demo-video js-lazy-video" data-comparison-group="road-response" controls muted loop playsinline preload="none" poster="assets/videos/gallery/road-response/speed-hump-snow-five-step.webp?v=20260804d" aria-label="Speed hump response from Snow 0 through Snow 3"><source data-src="assets/videos/gallery/road-response/speed-hump-snow-five-step.mp4?v=20260804d" type="video/mp4"></video><span class="demo-badge">SNOW · 0 → 3 mm/h SWE</span></div>
+            <figcaption><strong>Speed Hump · snow ladder</strong><span>Snow 0, 0.5, 1, 2, and 3 mm/h SWE preserve the road-attached accumulation while the dynamic particle layer evolves.</span><div class="response-metrics"><span><b>5.2 s</b> full event</span><span><b>stable</b> static snow</span></div></figcaption><noscript><a href="assets/videos/gallery/road-response/speed-hump-snow-five-step.mp4">Open Speed Hump snow matrix</a></noscript>
           </figure>
-          <figure class="demo-card">
-            <div class="demo-media"><video class="demo-video js-lazy-video" controls muted loop playsinline preload="none" poster="assets/videos/gallery/snow/snow-2.webp" aria-label="Snow at 2 millimeters per hour snow-water equivalent"><source data-src="assets/videos/gallery/snow/snow-2.mp4" type="video/mp4"></video><span class="demo-badge">2 mm/h SWE</span></div>
-            <figcaption><strong>Snow 2</strong><span>Denser accumulation and particles from the validated full rerender.</span></figcaption><noscript><a href="assets/videos/gallery/snow/snow-2.mp4">Open Snow 2 video</a></noscript>
-          </figure>
-          <figure class="demo-card">
-            <div class="demo-media"><video class="demo-video js-lazy-video" controls muted loop playsinline preload="none" poster="assets/videos/gallery/snow/snow-3.webp" aria-label="Snow at 3 millimeters per hour snow-water equivalent"><source data-src="assets/videos/gallery/snow/snow-3.mp4" type="video/mp4"></video><span class="demo-badge">3 mm/h SWE</span></div>
-            <figcaption><strong>Heavy snow</strong><span>Highest stable snow condition used by the paper media protocol.</span></figcaption><noscript><a href="assets/videos/gallery/snow/snow-3.mp4">Open Snow 3 video</a></noscript>
-          </figure>
-        </div>
-      </section>
-
-      <section class="demo-group" id="demo-speed-bump" aria-labelledby="demo-speed-bump-title">
-        <header class="demo-group-header">
-          <div><p class="result-kicker">Signed road geometry</p><h3 class="title is-4" id="demo-speed-bump-title">Speed bump</h3></div>
-          <p>One shared positive road profile drives visible geometry, axle excitation, pitch, heave, and camera motion at 40 km/h and 1.0 MPa braking.</p>
-        </header>
-        <div class="demo-grid demo-grid-three">
-          <figure class="demo-card">
-            <div class="demo-media"><video class="demo-video js-lazy-video" controls muted loop playsinline preload="none" poster="assets/videos/gallery/speed-bump/dry.webp" aria-label="Dry speed-bump event"><source data-src="assets/videos/gallery/speed-bump/dry.mp4" type="video/mp4"></video><span class="demo-badge">Dry</span></div>
-            <figcaption><strong>Dry speed bump</strong><span>Geometry reference on the additional reconstructed route.</span></figcaption><noscript><a href="assets/videos/gallery/speed-bump/dry.mp4">Open dry speed-bump video</a></noscript>
-          </figure>
-          <figure class="demo-card">
-            <div class="demo-media"><video class="demo-video js-lazy-video" controls muted loop playsinline preload="none" poster="assets/videos/gallery/speed-bump/rain-50.webp" aria-label="Speed bump under 50 millimeters per hour rain"><source data-src="assets/videos/gallery/speed-bump/rain-50.mp4" type="video/mp4"></video><span class="demo-badge">Rain 50</span></div>
-            <figcaption><strong>Rain + speed bump</strong><span>Heavy rain, wet-road friction, and positive geometry act together.</span></figcaption><noscript><a href="assets/videos/gallery/speed-bump/rain-50.mp4">Open rainy speed-bump video</a></noscript>
-          </figure>
-          <figure class="demo-card">
-            <div class="demo-media"><video class="demo-video js-lazy-video" controls muted loop playsinline preload="none" poster="assets/videos/gallery/speed-bump/snow-3.webp" aria-label="Speed bump under Snow 3 conditions"><source data-src="assets/videos/gallery/speed-bump/snow-3.mp4" type="video/mp4"></video><span class="demo-badge">Snow 3</span></div>
-            <figcaption><strong>Snow + speed bump</strong><span>Stable heavy snow combined with the same signed hump profile.</span></figcaption><noscript><a href="assets/videos/gallery/speed-bump/snow-3.mp4">Open snowy speed-bump video</a></noscript>
-          </figure>
-        </div>
-      </section>
-
-      <section class="demo-group" id="demo-sunken-road" aria-labelledby="demo-sunken-road-title">
-        <header class="demo-group-header">
-          <div><p class="result-kicker">Signed road geometry</p><h3 class="title is-4" id="demo-sunken-road-title">Sunken road / depression</h3></div>
-          <p>A negative road-height profile produces the complementary heave and pitch response under dry, rain, and snow conditions.</p>
-        </header>
-        <div class="demo-grid demo-grid-three">
-          <figure class="demo-card">
-            <div class="demo-media"><video class="demo-video js-lazy-video" controls muted loop playsinline preload="none" poster="assets/videos/gallery/sunken-road/dry.webp" aria-label="Dry sunken-road event"><source data-src="assets/videos/gallery/sunken-road/dry.mp4" type="video/mp4"></video><span class="demo-badge">Dry</span></div>
-            <figcaption><strong>Dry road depression</strong><span>Geometry reference for the signed negative road profile.</span></figcaption><noscript><a href="assets/videos/gallery/sunken-road/dry.mp4">Open dry sunken-road video</a></noscript>
-          </figure>
-          <figure class="demo-card">
-            <div class="demo-media"><video class="demo-video js-lazy-video" controls muted loop playsinline preload="none" poster="assets/videos/gallery/sunken-road/rain-50.webp" aria-label="Sunken road under 50 millimeters per hour rain"><source data-src="assets/videos/gallery/sunken-road/rain-50.mp4" type="video/mp4"></video><span class="demo-badge">Rain 50</span></div>
-            <figcaption><strong>Rain + depression</strong><span>Heavy rain with synchronized friction, negative geometry, and motion.</span></figcaption><noscript><a href="assets/videos/gallery/sunken-road/rain-50.mp4">Open rainy sunken-road video</a></noscript>
-          </figure>
-          <figure class="demo-card">
-            <div class="demo-media"><video class="demo-video js-lazy-video" controls muted loop playsinline preload="none" poster="assets/videos/gallery/sunken-road/snow-3.webp" aria-label="Sunken road under Snow 3 conditions"><source data-src="assets/videos/gallery/sunken-road/snow-3.mp4" type="video/mp4"></video><span class="demo-badge">Snow 3</span></div>
-            <figcaption><strong>Snow + depression</strong><span>Stable Snow 3 appearance over the same negative road event.</span></figcaption><noscript><a href="assets/videos/gallery/sunken-road/snow-3.mp4">Open snowy sunken-road video</a></noscript>
-          </figure>
-        </div>
-      </section>
-
-      <section class="demo-group" id="demo-multiscene" aria-labelledby="demo-multiscene-title">
-        <header class="demo-group-header">
-          <div><p class="result-kicker">Generalization</p><h3 class="title is-4" id="demo-multiscene-title">Multi-scene transfer</h3></div>
-          <p>Five anonymous reconstructed routes with pose-bound precipitation and true physical braking trajectories from 30 to 45 km/h.</p>
-        </header>
-        <div class="demo-grid">
-          <figure class="demo-card">
-            <div class="demo-media"><video class="demo-video js-lazy-video" controls muted loop playsinline preload="none" poster="assets/videos/gallery/scenes/scene-a-rain-50-30.webp" aria-label="Scene A under heavy rain at 30 kilometers per hour"><source data-src="assets/videos/gallery/scenes/scene-a-rain-50-30.mp4" type="video/mp4"></video><span class="demo-badge">A · 30 km/h</span></div>
-            <figcaption><strong>Scene A · Rain 50</strong><span>Heavy-rain braking at 30 km/h with 2.0 MPa input.</span></figcaption><noscript><a href="assets/videos/gallery/scenes/scene-a-rain-50-30.mp4">Open Scene A video</a></noscript>
-          </figure>
-          <figure class="demo-card">
-            <div class="demo-media"><video class="demo-video js-lazy-video" controls muted loop playsinline preload="none" poster="assets/videos/gallery/scenes/scene-b-rain-50-35.webp" aria-label="Scene B under heavy rain at 35 kilometers per hour"><source data-src="assets/videos/gallery/scenes/scene-b-rain-50-35.mp4" type="video/mp4"></video><span class="demo-badge">B · 35 km/h</span></div>
-            <figcaption><strong>Scene B · Rain 50</strong><span>Heavy-rain braking at 35 km/h on a second route.</span></figcaption><noscript><a href="assets/videos/gallery/scenes/scene-b-rain-50-35.mp4">Open Scene B video</a></noscript>
-          </figure>
-          <figure class="demo-card">
-            <div class="demo-media"><video class="demo-video js-lazy-video" controls muted loop playsinline preload="none" poster="assets/videos/gallery/scenes/scene-c-rain-50-depression-40.webp" aria-label="Scene C with heavy rain and a road depression at 40 kilometers per hour"><source data-src="assets/videos/gallery/scenes/scene-c-rain-50-depression-40.mp4" type="video/mp4"></video><span class="demo-badge">C · 40 km/h</span></div>
-            <figcaption><strong>Scene C · Rain + depression</strong><span>Rain 50 with a signed road depression and 1.0 MPa braking.</span></figcaption><noscript><a href="assets/videos/gallery/scenes/scene-c-rain-50-depression-40.mp4">Open Scene C video</a></noscript>
-          </figure>
-          <figure class="demo-card">
-            <div class="demo-media"><video class="demo-video js-lazy-video" controls muted loop playsinline preload="none" poster="assets/videos/gallery/scenes/scene-d-snow-3-40.webp" aria-label="Scene D under Snow 3 at 40 kilometers per hour"><source data-src="assets/videos/gallery/scenes/scene-d-snow-3-40.mp4" type="video/mp4"></video><span class="demo-badge">D · 40 km/h</span></div>
-            <figcaption><strong>Scene D · Snow 3</strong><span>Stable heavy-snow transfer with synchronized braking motion.</span></figcaption><noscript><a href="assets/videos/gallery/scenes/scene-d-snow-3-40.mp4">Open Scene D video</a></noscript>
-          </figure>
-          <figure class="demo-card">
-            <div class="demo-media"><video class="demo-video js-lazy-video" controls muted loop playsinline preload="none" poster="assets/videos/gallery/scenes/scene-e-rain-50-45.webp" aria-label="Scene E under heavy rain at 45 kilometers per hour"><source data-src="assets/videos/gallery/scenes/scene-e-rain-50-45.mp4" type="video/mp4"></video><span class="demo-badge">E · 45 km/h</span></div>
-            <figcaption><strong>Scene E · Rain 50</strong><span>Highest-speed held-out route in the compact media protocol.</span></figcaption><noscript><a href="assets/videos/gallery/scenes/scene-e-rain-50-45.mp4">Open Scene E video</a></noscript>
+          <figure class="demo-card response-card step-matrix-card">
+            <div class="demo-media"><video class="demo-video js-lazy-video" data-comparison-group="road-response" controls muted loop playsinline preload="none" poster="assets/videos/gallery/road-response/sunken-road-snow-five-step.webp?v=20260804d" aria-label="Sunken road response from Snow 0 through Snow 3"><source data-src="assets/videos/gallery/road-response/sunken-road-snow-five-step.mp4?v=20260804d" type="video/mp4"></video><span class="demo-badge">SNOW · 0 → 3 mm/h SWE</span></div>
+            <figcaption><strong>Sunken Road · snow ladder</strong><span>The same five snow levels expose the negative-height response without drifting static snow or a truncated recovery.</span><div class="response-metrics"><span><b>5.2 s</b> full event</span><span><b>stable</b> static snow</span></div></figcaption><noscript><a href="assets/videos/gallery/road-response/sunken-road-snow-five-step.mp4">Open Sunken Road snow matrix</a></noscript>
           </figure>
         </div>
       </section>
@@ -394,7 +313,7 @@
             <div class="column content">
               <h3 class="title is-4">Matched protocols</h3>
               <p>Cosmos Transfer 2.5, LTX-Video 13B, VACE 14B, and muSync-GS are compared with documented inputs, prompts, checkpoints, seeds, temporal windows, and aggregation rules.</p>
-              <a href="assets/papers/musync-gs-supplement.pdf" target="_blank" rel="noopener">Read the complete protocol in the supplement →</a>
+              <a href="assets/papers/musync-gs-paper.pdf?v=20260803" target="_blank" rel="noopener">Read the protocol in the paper →</a>
             </div>
             <div class="column content limitation-card">
               <h3 class="title is-4">Current scope</h3>
@@ -429,7 +348,7 @@
 <footer class="footer">
   <div class="container">
     <div class="content has-text-centered footer-links">
-      <a class="icon-link" href="assets/papers/musync-gs-paper.pdf" target="_blank" rel="noopener" aria-label="Paper PDF"><i class="fas fa-file-pdf"></i></a>
+      <a class="icon-link" href="assets/papers/musync-gs-paper.pdf?v=20260803" target="_blank" rel="noopener" aria-label="Paper PDF"><i class="fas fa-file-pdf"></i></a>
       <span class="icon-link is-disabled" aria-label="Code not yet released"><i class="fab fa-github"></i></span>
     </div>
     <div class="columns is-centered">

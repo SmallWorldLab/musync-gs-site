@@ -1,44 +1,119 @@
 {
-  "schema_version": 1,
-  "display_card_count": 20,
-  "unique_video_count": 19,
+  "schema_version": 3,
+  "display_card_count": 6,
+  "unique_video_count": 6,
   "format": {
     "codec": "H.264",
     "fps": 10,
     "audio": false,
-    "maximum_width": 720,
+    "maximum_width": 1280,
     "faststart": true
   },
   "groups": {
-    "rain": [
-      {"file": "rain/sunny.mp4", "label": "Sunny control", "rate_mm_h": 0},
-      {"file": "rain/rain-10.mp4", "label": "Rain 10", "rate_mm_h": 10},
-      {"file": "rain/rain-25.mp4", "label": "Rain 25", "rate_mm_h": 25},
-      {"file": "rain/rain-50.mp4", "label": "Rain 50", "rate_mm_h": 50}
+    "weather_braking": [
+      {
+        "file": "braking/rain-braking-five-step.mp4",
+        "label": "Rain braking ladder",
+        "conditions": [
+          "sunny",
+          "rain_2",
+          "rain_10",
+          "rain_25",
+          "rain_50"
+        ],
+        "layout": "three_top_two_bottom",
+        "duration_s": 5.5,
+        "initial_speed_kmh": 40,
+        "brake_pressure_mpa": 2,
+        "stopping_distance_delta_m": 5.58088067757692,
+        "source_release": "scene-rebuilt-formal"
+      },
+      {
+        "file": "braking/snow-braking-five-step.mp4",
+        "label": "Snow braking ladder",
+        "conditions": [
+          "snow_0",
+          "snow_0p5",
+          "snow_1",
+          "snow_2",
+          "snow_3"
+        ],
+        "layout": "three_top_two_bottom",
+        "duration_s": 6.2,
+        "initial_speed_kmh": 40,
+        "brake_pressure_mpa": 2,
+        "stopping_distance_delta_m": 12.935085131137999,
+        "snow_composition": "official stable Snow5D lossless composition",
+        "road_snow_policy": "retain road-attached accumulation with fractional static and semantic sampling; crop before the post-stop static hold"
+      }
     ],
-    "snow": [
-      {"file": "rain/sunny.mp4", "label": "Sunny control", "rate_swe_mm_h": 0},
-      {"file": "snow/snow-0p5.mp4", "label": "Snow 0.5", "rate_swe_mm_h": 0.5},
-      {"file": "snow/snow-1.mp4", "label": "Snow 1", "rate_swe_mm_h": 1},
-      {"file": "snow/snow-2.mp4", "label": "Snow 2", "rate_swe_mm_h": 2},
-      {"file": "snow/snow-3.mp4", "label": "Snow 3", "rate_swe_mm_h": 3}
-    ],
-    "speed_bump": [
-      {"file": "speed-bump/dry.mp4", "weather": "dry"},
-      {"file": "speed-bump/rain-50.mp4", "weather": "rain_50"},
-      {"file": "speed-bump/snow-3.mp4", "weather": "snow_3"}
-    ],
-    "sunken_road": [
-      {"file": "sunken-road/dry.mp4", "weather": "dry"},
-      {"file": "sunken-road/rain-50.mp4", "weather": "rain_50"},
-      {"file": "sunken-road/snow-3.mp4", "weather": "snow_3"}
-    ],
-    "multiscene": [
-      {"file": "scenes/scene-a-rain-50-30.mp4", "alias": "A", "condition": "Rain 50", "initial_speed_kmh": 30},
-      {"file": "scenes/scene-b-rain-50-35.mp4", "alias": "B", "condition": "Rain 50", "initial_speed_kmh": 35},
-      {"file": "scenes/scene-c-rain-50-depression-40.mp4", "alias": "C", "condition": "Rain 50 + depression", "initial_speed_kmh": 40},
-      {"file": "scenes/scene-d-snow-3-40.mp4", "alias": "D", "condition": "Snow 3", "initial_speed_kmh": 40},
-      {"file": "scenes/scene-e-rain-50-45.mp4", "alias": "E", "condition": "Rain 50", "initial_speed_kmh": 45}
+    "road_response": [
+      {
+        "file": "road-response/speed-hump-rain-five-step.mp4",
+        "label": "Speed Hump rain ladder",
+        "conditions": [
+          "sunny",
+          "rain_2",
+          "rain_10",
+          "rain_25",
+          "rain_50"
+        ],
+        "layout": "three_top_two_bottom",
+        "duration_s": 5.2,
+        "playback_speed": 1,
+        "brake_pressure_mpa": 2.3,
+        "road_height_sign": 1
+      },
+      {
+        "file": "road-response/sunken-road-rain-five-step.mp4",
+        "label": "Sunken Road rain ladder",
+        "conditions": [
+          "sunny",
+          "rain_2",
+          "rain_10",
+          "rain_25",
+          "rain_50"
+        ],
+        "layout": "three_top_two_bottom",
+        "duration_s": 5.2,
+        "playback_speed": 1,
+        "brake_pressure_mpa": 2.3,
+        "road_height_sign": -1
+      },
+      {
+        "file": "road-response/speed-hump-snow-five-step.mp4",
+        "label": "Speed Hump snow ladder",
+        "conditions": [
+          "snow_0",
+          "snow_0p5",
+          "snow_1",
+          "snow_2",
+          "snow_3"
+        ],
+        "layout": "three_top_two_bottom",
+        "duration_s": 5.2,
+        "playback_speed": 1,
+        "brake_pressure_mpa": 2.3,
+        "road_height_sign": 1,
+        "static_snow_stability": "approved lossless independent accumulation and particle residual composition"
+      },
+      {
+        "file": "road-response/sunken-road-snow-five-step.mp4",
+        "label": "Sunken Road snow ladder",
+        "conditions": [
+          "snow_0",
+          "snow_0p5",
+          "snow_1",
+          "snow_2",
+          "snow_3"
+        ],
+        "layout": "three_top_two_bottom",
+        "duration_s": 5.2,
+        "playback_speed": 1,
+        "brake_pressure_mpa": 2.3,
+        "road_height_sign": -1,
+        "static_snow_stability": "approved lossless independent accumulation and particle residual composition"
+      }
     ]
   }
 }

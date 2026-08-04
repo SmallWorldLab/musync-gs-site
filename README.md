@@ -6,7 +6,7 @@ Academic project page for:
 
 This revision is based on the public [Nerfies project-page template](https://github.com/nerfies/nerfies.github.io). The structure uses Bulma and Nerfies-style academic presentation, while the content, research media, typography accents, result modules, and responsive styling are customized for muSync-GS.
 
-The media section contains 20 individually labeled cards backed by 19 unique videos: rain-rate control, snow-rate control, speed bumps, sunken roads, and five reconstructed routes. Gallery media is loaded only when it approaches the viewport.
+The media section contains six focused matrices: five-level rain braking, five-level stable snow braking, and Speed Hump / Sunken Road response under rain and snow on a dedicated road-hazard route. The packaged media supplement ZIP is left unchanged. Gallery media is loaded only when it approaches the viewport.
 
 ## Local preview
 
@@ -21,7 +21,7 @@ Open `http://localhost:8000`.
 
 - Authors and venue remain anonymous.
 - Search indexing is disabled with `noindex, nofollow`.
-- Paper and supplement point to packaged local PDFs.
+- Paper points to the packaged arXiv preview PDF; the project page does not expose a supplement link.
 - Code, public data, arXiv, final venue, contact, and BibTeX remain release placeholders.
 - The GitHub Pages deployment should remain disabled until the anonymity and release decision is confirmed.
 
@@ -50,7 +50,8 @@ No build step is required. The repository can be served as a static site.
 
 - Only the hero overview autoplays.
 - Gallery videos use `preload="none"` and near-viewport source hydration.
-- Starting one gallery video pauses the others.
+- The four equal-duration road-hazard matrices have synchronized play, pause, and restart controls.
+- Starting one video manually pauses videos outside its comparison group.
 - Each video ships with a small WebP poster and an explicit condition caption.
 
 ## Template license
