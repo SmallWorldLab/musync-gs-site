@@ -44,8 +44,8 @@ a:hover {
 .navbar > .container.is-max-desktop {
   width: 100%;
   max-width: none !important;
-  padding-right: 0.9rem;
-  padding-left: 0.55rem;
+  padding-right: clamp(1rem, 7vw, 7rem);
+  padding-left: clamp(1rem, 7vw, 7rem);
 }
 
 .navbar-item {
