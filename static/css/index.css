@@ -115,6 +115,33 @@ a:hover {
   color: #354052;
 }
 
+.named-authors sup,
+.publication-affiliations sup,
+.publication-corresponding sup {
+  position: relative;
+  top: -0.25em;
+  font-size: 0.68em;
+  font-weight: 700;
+}
+
+.publication-affiliations {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.2rem 1.25rem;
+  margin-top: 0.35rem;
+  color: #566174;
+  font-family: 'Google Sans', sans-serif;
+  font-size: 0.94rem;
+}
+
+.publication-corresponding {
+  margin-top: 0.25rem;
+  color: #70798a;
+  font-family: 'Google Sans', sans-serif;
+  font-size: 0.78rem;
+}
+
 .publication-venue {
   color: #70798a;
   font-weight: 500;
