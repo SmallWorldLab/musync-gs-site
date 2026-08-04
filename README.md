@@ -17,9 +17,9 @@ python3 -m http.server 8000
 
 Open `http://localhost:8000`.
 
-## Draft status
+## Publication status
 
-- Authors and venue remain anonymous.
+- The project page displays the paper authors.
 - Search indexing is disabled with `noindex, nofollow`.
 - Paper points to the packaged arXiv preview PDF; the project page does not expose a supplement link.
 - Code, public data, arXiv, final venue, contact, and BibTeX remain release placeholders.

@@ -1,6 +1,6 @@
 # Project page 内容准备清单
 
-当前原型已经能完整预览，但仍是**匿名、不可公开索引的 draft**。以下按发布优先级整理。
+当前项目页已经能完整预览并显示论文作者，但仍保留不可公开索引设置。以下按发布优先级整理。
 
 ## 1. 公开前必须确认
 
@@ -9,7 +9,7 @@
 | 项目名称 | 已使用 `muSync-GS` | 确认公开品牌究竟是 `muSync-GS`、`RoVES`，还是两者组合。建议与论文标题保持 `muSync-GS`。 |
 | 作者顺序 | 缺失 | 所有作者英文名、顺序、个人主页链接。 |
 | 单位与通讯作者 | 缺失 | 单位全称、上标对应关系、通讯作者标记和联系邮箱。 |
-| 论文状态 | 缺失 | Under review / accepted / preprint；未解除匿名前不要公开作者和项目 URL。 |
+| 论文状态 | 待更新 | 作者已公开；待确认 preprint / accepted 状态。 |
 | Venue | 占位 | 最终会议名称、年份、paper ID 或 award 信息（若有）。 |
 | Paper / arXiv | 本地 PDF 已有 | 决定使用本地 PDF、arXiv PDF、会议 PDF 还是 DOI；给出正式 URL。 |
 | Code URL | `Coming soon` | GitHub organization、仓库名、公开日期、release tag。 |
@@ -112,7 +112,7 @@ SmallWorldLab/musync-gs-site
 
 当前 Nerfies 风格页面顺序：
 
-1. Publication title / anonymous authors / resource buttons
+1. Publication title / authors / resource buttons
 2. Hero teaser
 3. Four-number proof strip
 4. Abstract / conceptual gap
