@@ -50,6 +50,16 @@ a:hover {
   background: transparent;
 }
 
+.lab-brand {
+  padding: 0.3rem 0.55rem 0.3rem 0.75rem !important;
+}
+
+.lab-brand img {
+  width: 112px;
+  height: auto;
+  max-height: none;
+}
+
 .project-mark {
   gap: 0.55rem;
   color: var(--ink) !important;
@@ -743,6 +753,20 @@ a:hover {
 }
 
 @media screen and (max-width: 768px) {
+  .lab-brand {
+    padding-right: 0.3rem !important;
+    padding-left: 0.45rem !important;
+  }
+
+  .lab-brand img {
+    width: 92px;
+  }
+
+  .project-mark {
+    padding-right: 0.35rem;
+    padding-left: 0.35rem;
+  }
+
   .publication-header .hero-body {
     padding-top: 3rem;
   }
