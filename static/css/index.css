@@ -41,6 +41,13 @@ a:hover {
   background: rgba(255, 255, 255, 0.92) !important;
 }
 
+.navbar > .container.is-max-desktop {
+  width: 100%;
+  max-width: none !important;
+  padding-right: 0.9rem;
+  padding-left: 0.55rem;
+}
+
 .navbar-item {
   font-family: 'Google Sans', sans-serif;
 }
@@ -51,11 +58,11 @@ a:hover {
 }
 
 .lab-brand {
-  padding: 0.3rem 0.55rem 0.3rem 0.75rem !important;
+  padding: 0.25rem 0.65rem 0.25rem 0 !important;
 }
 
 .lab-brand img {
-  width: 112px;
+  width: 142px;
   height: auto;
   max-height: none;
 }
@@ -754,12 +761,12 @@ a:hover {
 
 @media screen and (max-width: 768px) {
   .lab-brand {
-    padding-right: 0.3rem !important;
-    padding-left: 0.45rem !important;
+    padding-right: 0.4rem !important;
+    padding-left: 0 !important;
   }
 
   .lab-brand img {
-    width: 92px;
+    width: 108px;
   }
 
   .project-mark {
